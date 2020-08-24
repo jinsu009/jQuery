@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="UTF-8">
+			<title>html요소</title>
+			
+			<style>
+			/* 이미지위에 마우스를 올렸을때 마우스 커서의 모양이 변하도록 스타일을 넣어준다. */
+				img{ cursor:pointer; } 
+				
+			</style>
+			<script>
+			window.onload = function(){
+				//alert(document.getElementById("box1").innerHTML);
+				document.getElementById("box1").innerHTML = "박혜진";
+			};
+			//; = 함수의종료 없어도 딱히 오류가 발생하지는 않는다.
+			
+			function changeImg(){
+				//alert(document.getElementById("img").src);
+				
+				document.getElementById("img").src = "../img/fall.jpg";
+			}
+			function button(){
+				var ele = document.getElementById("switch");
+				
+				if(ele.src.indexOf("sw_off")!=-1){
+					ele.src = "../img/sw_on.png";
+				}
+				else{
+					ele.src = "../img/sw_off.png";
+				}
+			}
+			</script>
+		</head>
+	<body>
+		<div id = "box1">임수진</div>
+		
+		<div id = "box2"><img src="../img/cat.jpg" id="img" width="150"><br>
+		<button onclick="changeImg();">눌러보세용</button></div>
+		
+		<div id="box3"><img width="150" src="../img/sw_off.png" id="switch" onclick="button();"></div>
+	
+	</body>
+	</html>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

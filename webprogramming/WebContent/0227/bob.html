@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="UTF-8">
+			<title>스폰지밥 당첨</title>
+			<style type="text/css">
+				*{ text-align : center; }
+				img{ width:150px; height:150px;  border-radius: 70%; }
+				table{ margin:auto}
+				button{ 
+					background-color:yellow; 
+					font-weight: bold;
+					width:100px; height : 50px;
+				}
+				#result{font-size:25pt; font-weight:bold; color:red;}
+				#img6 { width:180px; height: 180px; border-radius: 70%; }
+			
+			</style>
+			<script>
+				
+				idx = ["td1","td2","td3","td4","td5"];
+				function setImg() {
+					
+					/*(document.getElementById("td5").style.backgroundColor == "white")
+					?(document.getElementById("td1").style.backgroundColor = "red")
+					:(document.getElementById("td1").style.backgroundColor = "white");
+					
+					(document.getElementById("td1").style.backgroundColor == "white")
+					?(document.getElementById("td2").style.backgroundColor = "red")
+					:(document.getElementById("td2").style.backgroundColor = "white");
+					
+					(document.getElementById("td2").style.backgroundColor == "white")
+					?(document.getElementById("td3").style.backgroundColor = "red")
+					:(document.getElementById("td3").style.backgroundColor = "white");
+					
+					(document.getElementById("td3").style.backgroundColor == "white")
+					?(document.getElementById("td4").style.backgroundColor = "red")
+					:(document.getElementById("td4").style.backgroundColor = "white");
+					
+					(document.getElementById("td4").style.backgroundColor == "white")
+					?(document.getElementById("td5").style.backgroundColor = "red")
+					:(document.getElementById("td5").style.backgroundColor = "white");
+					*/
+				
+					/* var color = "";
+			
+					var red = Math.floor(Math.random() * 256);
+					var green = Math.floor(Math.random() * 256);
+					var blue = Math.floor(Math.random() * 256);
+					color = "#" + red.toString(16) + green.toString(16) + blue.toString(16);
+					document.getElementById("td1").style.backgroundColor = color;
+			
+					var red = Math.floor(Math.random() * 256);
+					var green = Math.floor(Math.random() * 256);
+					var blue = Math.floor(Math.random() * 256);
+					color = "#" + red.toString(16) + green.toString(16) + blue.toString(16);
+					document.getElementById("td2").style.backgroundColor = color;
+			
+					var red = Math.floor(Math.random() * 256);
+					var green = Math.floor(Math.random() * 256);
+					var blue = Math.floor(Math.random() * 256);
+					color = "#" + red.toString(16) + green.toString(16) + blue.toString(16);
+					document.getElementById("td3").style.backgroundColor = color;
+			
+					var red = Math.floor(Math.random() * 256);
+					var green = Math.floor(Math.random() * 256);
+					var blue = Math.floor(Math.random() * 256);
+					color = "#" + red.toString(16) + green.toString(16) + blue.toString(16);
+					document.getElementById("td4").style.backgroundColor = color;
+			
+					var red = Math.floor(Math.random() * 256);
+					var green = Math.floor(Math.random() * 256);
+					var blue = Math.floor(Math.random() * 256);
+					color = "#" + red.toString(16) + green.toString(16) + blue.toString(16);
+					document.getElementById("td5").style.backgroundColor = color; */
+					
+				}
+				function start() {
+					z = setInterval(setImg, 300);
+				}
+				function stop() {
+
+					document.getElementById("td1").style.backgroundColor = "white";
+					document.getElementById("td2").style.backgroundColor = "white";
+					document.getElementById("td3").style.backgroundColor = "white";
+					document.getElementById("td4").style.backgroundColor = "white";
+					document.getElementById("td5").style.backgroundColor = "white";
+
+					var a = Math.floor(Math.random()*idx.length);
+					//var a = 2;
+					document.getElementById(idx[a]).style.backgroundColor = "blue";
+					
+					if(idx[a]==idx[2]){ document.getElementById("result").innerHTML="당첨!!"}
+					else{ document.getElementById("result").innerHTML="꽝!!"}
+					clearInterval(z);
+				}
+		</script>
+</head>
+	<body>
+	<!-- 이미지를 겹쳐서 겹쳐진 이미지만 깜빡이도록 만든다.
+		blink : 파폭 지원 크롬x 익스플로어x
+	 종료버튼을 누르면 clearInterval 시킬수 있도록  -->
+	 <!-- '$' : ?? 어떤기능이길래 많이 사용될까  -->
+	 <!--시작 버튼을 눌렀을때 td의 배경을 랜덤으로 바꾸게 한다. 
+	 	 종료 버튼을 눌렀을때 랜덤으로 td1~td5까지 선택을 하고 만약 랜덤으로 나온 id가 스폰지밥의 id와 같다면 당첨과동시에 배경을 검정색으로 바꾼다.
+	 	 그외의 이미지가 선택될경우 꽝을 나오게 한다.  -->
+	 	 
+	 	 <!-- div relative안에서 absolute 시킨다.  -->
+	
+		<h1>진행중인 이벤트</h1>
+		<h3> 100% 당첨 </h3>
+		
+		<!-- <table>
+			<tr>
+				<td id="td1"><div><img id="img1" src="../img/카페라떼.jpg" ></div></td>
+				<td id="td2"><div><img id="img2" src="../img/카푸치노.jpg"></div></td>
+				<td id="td3"><div><img id="img3" src="../img/spongebob.png"></div></td>
+				<td id="td4"><div><img id="img4" src="../img/hubble2.jpg"></div></td>
+				<td id="td5"><div><img id="img5" src="../img/수국.jpg"></div></td>
+			</tr>
+			<tr><td colspan="5"><div id="result"></div></td></tr>
+		</table> -->
+		 <div>
+			<div style="position:absolute">
+				<div style="position:relative; top:120px; left:76px;"><img id="img1" src="../img/카페라떼.jpg" > </div>
+			</div>
+			<div style="position:absolute">
+				<div style="position:relative; top:110px; left:62px;"><img id="img6" src="../img/ba_2012.png"></div>
+			</div>
+		</div>
+		
+		<div>
+			<div style="position:absolute">
+				<div style="position:relative; top:120px; left:263px;"><img id="img2" src="../img/카푸치노.jpg"> </div>
+			</div>
+			<div style="position:absolute">
+				<div style="position:relative; top:110px; left:248px;"><img id="img6" src="../img/ba_2012.png"></div>
+			</div>
+		</div> 
+		
+		<br><br>
+		<div id="p"><p>환영합니다. 시작 버튼을 눌러주세요. 당신에게 행운을 드립니다.</p></div><br>
+		<br>
+		<div id="button">
+			<button id="startbtn" onclick="start();">시작</button>
+			<button id="stopbtn" onclick="stop();">종료</button>
+		</div>
+		
+	</body>
+	</html>

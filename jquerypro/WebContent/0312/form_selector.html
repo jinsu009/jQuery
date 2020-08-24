@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+	<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>form 선택자 </title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script>
+			$(function(){
+				var str = "";
+				$("#btnview").click(function(){
+					//alert 로 찍을때는 "\n" 사용
+					str += $("#userName").val()+"\n";
+					//str += $("#gender:checked").val()+"\n";
+					str += $(":radio:checked").val()+"\n";
+					str += $("#intro").val()+"\n";
+					//str += $("#work :selected").val()+"\n";
+					str += $("#work").val()+"\n";
+					
+					//정확한 표기법은 checked와 selected를 적어줘야 하지만 좀 더 간단히 적어줄 수도 있다. 
+					// :selected  는 앞에 한칸 띄어준다. 
+					
+					alert(str);
+					/*
+						val() 메소드를 이용하여 입력하거나 선택된 값을 가져오기 
+						radio 의 선택된 값가져오기 : $(":radio:checked").val(); ..라디오에 name없는 경우
+						select선택한 값 (option) : $("#work:selected").val();
+					*/
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<form>
+			이름 : <input type="text" id="userName" value="name"><br>
+			성별 : <input type="radio" id="gender" name="gender" value="female">여성
+				<input type="radio" id="gender" name="gender" value="male">남성<br>
+			소개 : <textarea rows="4" cols="40" id="intro"></textarea><br>
+			직업 : <select id="work">
+				<option value="programmer">프로그래머</option>
+				<option value="student">학생</option>
+				<option value="worker">공무원</option>
+				<option value="noWorker">백수</option>
+			</select>
+			<input type="button" id="btnview" value="전송">
+		</form>	
+	</body>
+	</html>

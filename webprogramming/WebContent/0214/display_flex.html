@@ -1,0 +1,41 @@
+	<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="UTF-8">
+			<title>display_flex(200217)</title>
+			
+			<style type="text/css">
+				#divwrap{
+					display : flex;
+					flex-direction: row;
+					/*flex-direction: 배치방향 >> 밑으로 떨어지게 하려면 column,, 옆으로 붙게 하려면 row*/
+					background-color:blue;
+				}
+				
+				#divwrap > div{
+					/* > : 자기 자식한테 적용 */
+					background-color:grey;
+					width:100px;
+					height:100px;
+					margin:10px;
+					text-align:center;
+				}
+			
+			</style>
+			
+		</head>
+	<body>
+	
+		<div id="divwrap">
+		
+		
+			<div>
+			<!-- 자식 -->
+			1</div>
+			<div>2</div>
+			<div>3</div>
+		
+		</div>
+	
+	</body>
+	</html>

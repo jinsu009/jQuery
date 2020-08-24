@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>location 객체</title>
+		<script type="text/javascript">
+			window.onload = function(){
+							//alert("onload");
+			}
+			
+			function proc2(){
+				var param = alert(decodeURI(location.search));
+				
+				param = alert(param.substring(1));
+				
+				param = param.split("&"); //'&'을기준으로 잘라준다. param은 배열 형태가 될 것이다. 
+				
+				for(var a in param.length)
+					{
+						obj = param[a].split("=");
+						
+						document.write(obj[0]+":"+obj[1]+"<br>");
+					}
+				
+				/*
+				string 객체 이용 ... ??
+						
+				파라미터를 아래의 출력형태로 body id="result1"안에 출력하세요  
+				name : 임수진 , tel : 010-0000-0000*/
+				
+			}
+			function proc1(){
+				
+				res = "protocol >> " + location.protocol + "<br>";
+				res += "host  " + location.host +"<br>";
+				res += "hostname  " + location.hostname +"<br>";
+				res += "port  " + location.port +"<br>";
+				res += "pathname  " + location.pathname +"<br>";
+				res += "href  " + location.href +"<br>";
+				
+				//document.getElementById("result").innerHTML =res;
+				
+				
+			}
+			
+			function go(){
+				alert("go");
+				
+			}
+			function goPost(){
+				/*<form name ="myform" action="result.html" method="post"></form>*/
+				// document.getElementsByTagName("form")[0];
+				document.myform.action = "result.html";
+				document.myform.method="post";
+				document.myform.submit();
+			}
+			
+			function goPage(page){
+				location.href = page;
+			}
+			function goReplace(page){
+				//페이지 뒤로가기가 클릭되지 않는다. 
+				location.replace(page);
+			}
+			function goReload(){
+				//F5(새로고침) 기능과 동일하다 .. 
+				location.reload();
+			}
+		</script>
+	</head>
+	<body>
+		<div>
+		<h2>location 객체</h2>
+			<p>
+				- URL 정보를 얻어오는 객체 <br>
+				- href : 전체 url <br>
+				- port : port정보 <br>
+				- host : hostname과 port <br>
+				- hostname : hostname <br>
+				- pathname : 경로 <br> 
+			</p>
+			<button onclick="proc1();">실행</button>
+		</div>
+		
+		<div id="result"></div>
+		
+		
+		<form name="myform" action="result.html">
+			name : <input type="text" name="name" id="name"><br>
+			tel : <input type="text" name="tel" id="tel"><br>
+			
+		<!-- submit 타입 일경우 , onclick에 해당하는 함수 실행후  action url로 이동  -->
+		
+		<input type="submit" value="전송" onlclick="go();"><br> 
+			
+		<input type="submit" value="post전송" onclick="goPost();"><br>
+		<!-- input type="button" 일때는 페이지가 한번 리로드 되면서 go라는 alert가 나온다.   -->
+		
+		
+		</form>
+		<hr>
+		<button onclick="location.href='result.html'">페이지 이동</button><br> 
+		<button onclick="goPage('result.html');">페이지 이동 2</button><br> 
+		<button onclick="goReplace('result.html');">페이지 재이동</button><br> 
+		<button onclick="goReload();">페이지 reload</button><br> 
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

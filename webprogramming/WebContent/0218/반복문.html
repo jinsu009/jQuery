@@ -1,0 +1,171 @@
+	<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="UTF-8">
+			<title>반복문</title>
+			
+			<script type="text/javascript">
+				
+			
+			function myfunc(){
+			
+// 				for(var i = 0; i<10; i++)
+// 					{
+// 						document.write(i+"<br>");
+// 					}
+				
+				var i = 0;
+				while(i<10)
+					{
+// 						if(i==3){
+// 							//continue;
+// 						}
+// 						else{
+// 						document.write(i+"<br>");
+// 						}
+// 						i++;
+
+						document.write(i+"<br>");
+						i++;
+						
+						if(i==3) {break;}
+						
+					}
+				
+				/* 문제1)) 1에서 부터 100까지 숫자를 더하는 for문과 while 작성*/
+				var sum = 0;
+				for(var i = 0; i<=100;i++)
+					{
+						sum += i;
+					}
+				document.write(sum+"<br>");
+				
+				
+				while(i <= 100)
+					{
+						suwm +=i;
+					}
+				document.write(sum+"<br>");
+				
+				/* 문제2)) 1부터 200까지의 숫자중 짝수의 합을 구하는 프로그램작성 (continue이용)*/
+				for(var i = 0; i<=200; i++)
+					{
+						 if(i%2==0)
+							 {
+							 	sum += i;
+							 	continue;
+							 }
+					}
+				document.write(sum+"<br>");
+				
+				/* 문제3)) 1에서 100까지의 숫자중 2의 배수이면서 3의 배수인 수만 출력하세요 */
+				
+				for(var i = 1; i<=100; i++)
+					{
+						if(i%2==0 && i %3 == 0)
+							{
+								document.write(i+",");
+							}
+					}
+			}
+				
+			function gugu(){
+			document.write("<table>");
+				for(var i = 1; i<10;i++)
+					{
+					document.write("<tr>");
+						for(var j = 0; j<10; j++)
+							{
+								document.write("<td>")
+								document.write(i+"*"+j+"="+(i*j)+"<br>");
+								document.write("</td>")
+							}
+					document.write("</tr>");
+					}
+			document.write("</table>");
+			}
+			
+			function gugudan(){
+			/*promtp로 단을 입력해서 해당하는 단의 배경색을 노랑색으로 변경해주세요 */
+			var s =parseInt(prompt("단 을 입력하세요 "));
+			/* 구구단 3*3 으로 출력하기 */
+			document.write("<table>");
+			for(var i = 1; i<10;i++)
+				{ 
+				if(i%3==1){
+					document.write("<tr>");
+					}
+				
+				if(i == s){
+					document.write("<td style='background-color:yellow'>");
+				}
+				else{document.write("<td>");}
+					document.write(i+"단<br>");	
+				for(var j = 1; j<10; j++)
+						{										
+							document.write(i+"*"+j+"="+(i*j)+"<br>");	
+						}
+				
+					document.write("</td>");
+				}
+			if(i%3==0){
+					document.write("</tr>");}
+			document.write("</table>");
+			}
+			
+			//gugudan();
+			
+			function inputnumber(){
+				/*for문을 이용해서 숫자 5개 출력  출력형태 : 10,20,30,40,50*/
+				var num = "";
+				for(var i = 0 ; i<5; i++)
+					{
+						 num += prompt("숫자를 입력해주세요 ");
+						
+						 if(i==4){continue;}
+						 
+						 num += ",";
+					}
+				document.write( num);
+			}
+		
+			inputnumber();//함수호출 
+		
+			/* prompt로 두 수를 입력받아 두 수의 합이 100이상일 경우에만 출력하세요 
+				0,0 이 입력되면 종료하세요 */
+			function sumsum()
+			{
+				
+				do{
+					
+				var x = (parseInt)(prompt("숫자를 입력해주세요 "));
+				var y = (parseInt)(prompt("숫자를 입력해주세요 "));
+				
+				if((x+y)>=100)
+					{
+						document.write("x = "+x+ "," + " y = "+y+"<br>");
+							
+					}
+				else if(x==0 && y==0)
+					{
+						break;
+					}
+				}while(true);
+					document.write("종료");
+			}
+			
+			//sumsum();
+		
+			</script>
+			
+			<style>
+				table, td{border:1px solid black; }
+			</style>
+			
+		</head>
+	<body>
+	
+		
+	
+	</body>
+	</html>

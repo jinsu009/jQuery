@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>ajaxChaning(ajax chaining)</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script>
+			$(function(){
+				$.ajax({
+					//url:"../data/result6.txt", //fail 페이지 띄우기 
+					url:"../data/result.txt",
+					dataType :"text",
+				})
+				.done(function(data){
+					console.log("done : success와 같은 기능 ");
+					console.log(data);
+				})
+				.fail(function(){
+					console.log("fail : error과 같은기능");
+					console.log("fail");
+				})
+				.always(function(){
+					console.log("always : final과 같은기능");
+					console.log("항상 출력되요!");
+				});
+				
+				
+			});
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>
+
+
+
+
+
+

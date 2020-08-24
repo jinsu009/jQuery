@@ -1,0 +1,68 @@
+	<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="UTF-8">
+			<title>BOM과 DOM</title>
+			<style>
+				#result{
+					width:200px;
+					height:200px;
+					background-color:yellow;
+				}
+			</style>
+			<script>
+				function winopen(){
+					//window.open("http://www.naver.com");
+					
+					var myWin = window.open("", "", "width=200, height=200");
+					//새창이 열린다.
+					
+					myWin.document.write("<p>this is mywin.</p>")
+					
+					setTimeout(function(){myWin.close();}, 3000);
+					//3초이후에 close작업 수행 
+					}
+				
+				function setIntervalFunc(){
+					/* 3초마다 노랑색 분홍색이 번갈아서변경될수 있도록 */
+					
+						
+					setInterval(
+							function(){
+								 (document.getElementById("result").style.background=="pink")
+								 ?(document.getElementById("result").style.background="yellow")
+								 :(document.getElementById("result").style.background="pink")}, 1000); 
+					}
+			</script>
+		</head>
+	<body>
+	
+		<div class="box">
+			<h2>window객체</h2>
+			<p>
+			- 브라우저 모델객체(DOM)에서 최상위 객체로서 웹 브라우저 윈도우를 나타낸다. <br>
+			- open(), close() <br>
+			- setInterval(), clearInterval(), setTimeout() <br>
+			- alert(), confirm(), prompt() <br>
+			- focus() <br>
+			- 속성 : opener <br>
+			</p>
+			<button onclick="winopen();">새로운 창 열기</button>
+		</div>
+		
+		<div class="box">
+			<h2></h2>
+			<p>
+				- setTimeout(function, millisec) : 정해진 시간후에 function을 한번만 실행한다. <br>
+				- setInterval(function, millisec) : 정해진 시간 간격으로 매번 function을 수행 <br>
+				- clearInterval(변수) : setInterval에 의해서 실행된 기능을 중지<br>
+			</p>
+			<button onclick="setIntervalFunc();"> setInterval 실행</button>
+			<button onclick="clearIntervalFunc();"> clearInterval 실행</button>
+		</div>
+	
+		<br>
+		<div id="result"></div>
+	
+	</body>
+	</html>

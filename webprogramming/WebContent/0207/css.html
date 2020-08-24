@@ -1,0 +1,93 @@
+	<!DOCTYPE html>
+	<html>
+	<head>
+	<meta charset="UTF-8">
+	<title>외부스타일 내부스타일 폰트변경..</title>
+	
+	
+	<!-- 외부스타일 시트 -->
+	<link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
+	<!-- 폰트를 인터넷에서 복사해올경우 인터넷이 연결되어잇지않으면 적용이 안된다. 
+				그래서 이름 dohyeon옆에 대체할수 잇는 폰트 이름을 기재해준다. -->
+	
+	<link href = "../css/mycss.css" rel="stylesheet">
+	<!-- rel : 스타일 시트로 연결해준다.  -->
+	
+	
+	<!-- 내부스타일 시트 -->
+		<style>
+		/**{color : pink;}*/
+		/*내부스타일시트전부 변경*/
+		
+				p{
+				background-color : ysellow;
+				color : blue;
+				font-size : 30pt;
+				font-family: 'Do Hyeon', sans-serif;
+				}
+				
+				.divBox
+				{
+					width : 300px;
+					height : 300px;
+					background-color:yellow;
+					border:1px dashed red;
+				}
+				
+				/*
+				 	mycss.css 외부 스타일 시트를 변경하여 div배경색을 빨간색(red)으로 변경
+				 	내부스타일 시트를 변경하여 div안에 텍스트 생상을 흰색(white)으로 변경
+				 	div html 태그안에 "div입니다" 라는 텍스트를 추가하고 
+				 	인라인스타일시트로 해당 텍스트 색상을 핑크색(pink)으로 변경
+				*/
+				
+				div.divBox2
+				{
+					width : 300px;
+					height : 300px;
+					color:white;
+					
+				}
+				
+				h1,h2,h3				
+				{
+				color : green;
+				}
+				
+				
+		</style>
+	
+		</head>
+			<body>
+				<!-- 인라인 스타일 시트 -->
+				<!-- 밀접해있는 인라인 스타일 시트가 우선순위로 선정되어 폰트 색상은 빨간색이 적용된다.  -->
+				<p style = "color:red">여기는 p태그입니다.</p>
+				<!-- p태그는 block inline -->
+				
+				<div class ="divBox"></div>
+				
+				<div class ="divBox2" style="color:pink;">div입니다.</div>
+				
+				
+				<h1>h1태그입니다.</h1>
+				<h2>h2태그입니다.</h2>
+				<h3>h3태그입니다.</h3>
+			</body>
+	</html>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

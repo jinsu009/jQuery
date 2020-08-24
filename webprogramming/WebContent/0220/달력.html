@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+<title>달력 만들기</title>
+<style>
+table,td {
+	border: 1px solid black;
+	width: 350px;
+}
+td {
+	width: calc(300/ 7) px;
+	text-align: center;
+
+}
+</style>
+
+
+<script>
+	window.onload = cal;
+
+	function cal() {
+
+		var str = "";
+
+		var day = 1;
+
+		var year = 2020;
+
+		var month = 1;
+
+		var now = new Date();
+
+		now.setFullYear(year);
+
+		now.setMonth(month);
+
+		now.setDate(1);
+		
+		var today = new Date();
+
+		var nowDay = now.getDay(); //2020-02-01 의 요일 값 을 가져온다. 
+
+		var lastDay = (new Date(now.getFullYear(),now.getMonth() + 1, 0)).getDate();
+
+		var dayArr = [ "일", "월", "화", "수", "목", "금", "토" ];
+
+		str += "<table>";
+
+		str += "<caption>";
+
+		str += (year + " 달력");
+
+		str += "</caption>";
+
+		str += "<tr>";
+
+		str += "<td>";
+
+		str += "<button onclick ='prev(" + year + "," + month + ")'>"+ (now.getMonth()) + "월</button>";
+
+		str += "</td>";
+
+		str += "<td colspan='5'>";
+
+		str += (now.getMonth() + 1) + "월";
+
+		str += "</td>";
+
+		str += "<td>";
+
+		str += "<button onclick ='next(" + year + "," + month + ")'>"+ (now.getMonth() + 2) + "월</button>";
+
+		str += "</td>";
+
+		str += "</tr>";
+
+		str += "<tr>";
+
+		for ( var i in dayArr) {
+
+			str += "<td>";
+
+			str += dayArr[i];
+
+			str += "</td>";
+
+		}
+
+		str += "</tr>";
+
+		for (var j = 0; j < 5; j++) {
+
+			str += "<tr>";
+
+			for (var i = 0; i < 7; i++) {
+
+				if(year==today.getFullYear()
+						&& month==today.getMonth()
+						&& day==today.getDate())
+				{str += "<td style='background-color:cyan'>";}
+				
+				else{str += "<td>";}
+				
+				if (!((j == 0 && i < nowDay) || (j == 4 && day > lastDay))) {
+					str += day++;
+
+				}
+
+				str += "</td>";
+
+			}
+
+			str += "</tr>";
+
+		}
+
+		str += "</table>";
+
+		document.getElementById("cal").innerHTML = str;
+
+	}
+
+	function prev(year, month) {
+
+		var str = "";
+
+		var day = 1;
+
+		var now = new Date();
+
+		if (month == 0)
+
+		{
+			now.getFullYear(--year);
+			now.setMonth(11);
+			month = 11;
+		}
+
+		else
+
+		{
+			now.getFullYear(year);
+			now.setMonth(--month);
+		}
+
+		now.setDate(1);
+
+		var nowDay = now.getDay(); //2020-02-01 의 요일 값 을 가져온다.
+
+		var lastDay = (new Date(now.getFullYear(),
+
+		now.getMonth(), 0)).getDate();
+
+		var dayArr = [ "일", "월", "화", "수", "목", "금", "토" ];
+
+		str += "<table>";
+
+		str += "<caption>";
+
+		str += (year + " 달력");
+
+		str += "</caption>";
+
+		str += "<tr>";
+
+		str += "<td>";
+
+		if (month == 0)
+
+		{
+			str += "<button onclick ='prev(" + year + "," + month + ")'>"
+					+ 12 + "월</button>";
+		}
+
+		else
+
+		{
+			str += "<button onclick ='prev(" + year + "," + month + ")'>"
+					+ (now.getMonth()) + "월</button>";
+		}
+
+		str += "</td>";
+
+		str += "<td colspan='5'>";
+
+		str += (now.getMonth() + 1) + "월";
+
+		str += "</td>";
+
+		str += "<td>";
+
+		if (month == 11)
+
+		{
+			str += "<button onclick ='next(" + year + "," + month + ")'>"
+					+ 1 + "월</button>";
+		}
+
+		else
+
+		{
+			str += "<button onclick ='next(" + year + "," + month + ")'>"
+					+ (now.getMonth() + 2) + "월</button>";
+		}
+
+		str += "</td>";
+
+		str += "</tr>";
+
+		str += "<tr>";
+
+		for ( var i in dayArr) {
+
+			str += "<td>";
+
+			str += dayArr[i];
+
+			str += "</td>";
+
+		}
+
+		str += "</tr>";
+
+		for (var j = 0; j < 5; j++) {
+
+			str += "<tr>";
+
+			for (var i = 0; i < 7; i++) {
+
+				str += "<td>";
+
+				if (!((j == 0 && i < nowDay) || (j == 4 && day > lastDay))) {
+
+					str += day++;
+
+				}
+
+				str += "</td>";
+
+			}
+
+			str += "</tr>";
+
+		}
+
+		str += "</table>";
+
+		document.getElementById("cal").innerHTML = str;
+
+	}
+
+	function next(year, month) {
+
+		var str = "";
+
+		var day = 1;
+
+		var now = new Date();
+
+		if (month == 11)
+
+		{
+			now.setFullYear(++year);
+			now.setMonth(0);
+			month = 0;
+			
+		}
+
+		else
+
+		{
+			now.setFullYear(year);
+			now.setMonth(++month);
+		}
+
+		now.setDate(1);
+
+		/*2020년 12월은 제대로 되는데 왜 2021년은 적용이 안될까..  2021년 이후로 적용이 안됨   */
+
+		var nowDay = now.getDay(); //2020-02-01 의 요일 값 을 가져온다. 
+
+		var lastDay = (new Date(now.getFullYear(),
+
+		now.getMonth(), 0)).getDate();
+
+		var dayArr = [ "일", "월", "화", "수", "목", "금", "토" ];
+
+		str += "<table>";
+
+		str += "<caption>";
+
+		str += (year + " 달력");
+
+		str += "</caption>";
+
+		str += "<tr>";
+
+		str += "<td>";
+
+		if (month == 0 || month == 11)
+
+		{
+			str += "<button onclick ='prev(" + year + "," + month + ")'>"
+					+ 12 + "월</button>";
+		}
+
+		else
+
+		{
+			str += "<button onclick ='prev(" + year + "," + month + ")'>"
+					+ (now.getMonth()) + "월</button>";
+		}
+
+		str += "</td>";
+
+		str += "<td colspan='5'>";
+
+		str += (now.getMonth() + 1) + "월";
+
+		str += "</td>";
+
+		str += "<td>";
+
+		if (month == 11)
+
+		{
+			str += "<button onclick ='next(" + year + "," + month + ")'>"
+					+ 1 + "월</button>";
+		}
+
+		else
+
+		{
+			str += "<button onclick ='next(" + year + "," + month + ")'>"
+					+ (now.getMonth() + 2) + "월</button>";
+		}
+
+		str += "</td>";
+
+		str += "</tr>";
+
+		str += "<tr>";
+
+		for ( var i in dayArr) {
+
+			str += "<td>";
+
+			str += dayArr[i];
+
+			str += "</td>";
+
+		}
+
+		str += "</tr>";
+
+		for (var j = 0; j < 5; j++) {
+
+			str += "<tr>";
+
+			for (var i = 0; i < 7; i++) {
+
+				str += "<td>";
+
+				if (!((j == 0 && i < nowDay) || (j == 4 && day > lastDay))) {
+
+					str += day++;
+
+				}
+
+				str += "</td>";
+
+			}
+
+			str += "</tr>";
+
+		}
+
+		str += "</table>";
+
+		document.getElementById("cal").innerHTML = str;
+
+	}
+</script>
+
+
+
+</head>
+
+
+
+<body>
+
+
+
+	<div id="cal"></div>
+
+
+
+</body>
+
+
+
+</html>

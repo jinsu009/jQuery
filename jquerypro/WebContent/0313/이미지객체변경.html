@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>이미지 객체 변경</title>
+		<script src="../js/jquery-3.4.1.min.js"></script>
+		<script>
+			$(function(){
+				
+				$("button").css("display","none");
+				//$("button").hide() 
+				
+				
+				$("img").css({"width":"100px","height":"100px"});
+				
+				$("img").mouseover(function(){
+					//attr(getter, setter)
+					$(this).attr("src",$(this).attr("src2"));
+				});
+				
+				$("img").attr("temp",function(){
+				//each문을 사용하지 않고 return사용
+					return $(this).attr("src");
+				});
+				
+				$("img").mouseout(function(){
+					$(this).attr("src", $(this).attr("temp"));
+				});
+				
+				$("img").dblclick(function(){
+					$(this).hide();
+					
+					if($("img:visible").length==0){
+						$("button").show();
+					}
+				});
+				
+				$("button").click(function(){
+					$("img").show();
+					$(this).hide();
+					//$("button").hide();
+				});
+			});
+			
+		</script>
+	</head>
+	<body>
+	<!-- src2는 예제를 위해서 넣어둔것이지 실제로는 없다 -->
+		<img src="../img/spring_01.jpg" src2="../img/cat.jpg"/>
+		<img src="../img/spring_02.png" src2="../img/cat.jpg"/>
+		<img src="../img/spring_03.jpg" src2="../img/cat.jpg"/>
+		<img src="../img/spring_04.jpg" src2="../img/cat.jpg"/>
+		<hr>
+		<button>이미지 보이기</button>
+	
+	</body>
+</html>

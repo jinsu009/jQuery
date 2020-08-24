@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8">
+	<title>ajax_load</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$("button").on("click", function(){
+				$("div").load("test.txt #p1");
+				$("p").load("test.txt #p1");
+				//태그가 포함된 p태그 전체를 가져온다. load를 사용할 경우 p태그가 중첩되어 사용된다. 
+				//load는 많이 사용된다. ******
+				//ppt 17p 예제 추가 
+			});
+		});
+	</script>
+	</head>
+	<body>
+		<button>버튼클릭</button>
+		<div></div>	
+		<p>여기에 p태그를 넣어주세요 </p>
+	</body>
+</html>

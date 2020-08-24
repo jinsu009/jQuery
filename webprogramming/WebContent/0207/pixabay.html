@@ -1,0 +1,132 @@
+	<!DOCTYPE html>
+	<html>
+	<head>
+	<meta charset="UTF-8">
+	<title>픽사베이예제</title>
+	
+	<link href="https://fonts.googleapis.com/css?family=Lemonada&display=swap" rel="stylesheet">
+	
+	<style type="text/css">
+	
+		body{	
+		margin:0;
+		padding:0;
+		background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)), url('https://cdn.pixabay.com/index/2020/01/24/21-22-44-151_1440x480.jpg');
+		background-repeat : no-repeat;
+		width:2000px;height:670px;
+			}
+		
+		.c{	color :white; }
+		
+		.shdow{text-shadow: rgba(0,0,0,0.6)}
+		
+		#h1{font-family: 'Lemonada', cursive;}
+		
+		#hbox{  text-align: center;  }
+		
+		#sid{  font-size : 10pt;	}
+		
+		#wh{
+				height : 40px;
+				width:800px;
+				border-radius:10px;
+			}
+		
+		#top h2 {
+			
+			font-size:16px;
+			font-weight:400;
+		}
+		#top{
+			margin :auto;		
+			text-shdow: rgba(0,0,0,0.6);
+		}
+		
+		.bottom{font-size:13px;}
+				
+		.bottom2{
+			font-size : 12px;
+			position:relative;
+			/* 해당 태그의 위치를 변경하고 싶을때 사용 position의 default는 static이다.
+			relative를 부여하였을때는 top,right,bottom,left를 이용해서 위치 조절이 가능*/
+			padding : 90px 25px 15px;
+			/*padding 를 이용해 해당 문구를 이미지 하단으로 이동*/
+		}
+		
+		.media_search .dd_box
+		{	
+			float : right;
+			top :1px;
+			position : relative;
+			font-size :15px;
+			cursor : pointer;
+		}
+		
+		/*
+			class 를 불러낼땐 '.클래스이름' 
+			id 를 불러낼땐 '#아이디이름'
+			name은 불러내는 것이 아닌 jsp할때 넘겨주는 변수같은것....?		
+		*/
+		
+		#back{
+		margin-top:-50px;
+		padding:0;
+		}
+	
+	</style>
+	
+	</head>
+		<body>
+		
+			<div class="c" id="back">			
+			<!-- header 줄바꿈은 안되는데 그건 다음시간에! -->
+			<h1><span id ="h1">Pixabay</span> 
+			<span id ="sid">사진  &nbsp;일러스트 &nbsp; 벡터 &nbsp; 비디오</span>
+			</h1>
+			
+			<!-- h1 에 pixabay, 사진, 일러스트, 벡터, 비디오의 값을 넣어 일렬로 정렬시키고 
+					pixabay를 제외한다른 문구들을 span으로 묶어서 폰트 크기를 조절해줌 -->
+			
+			
+			<div id = "hbox" class ="c">
+			<div id = "top">
+				<h1 >놀라운 무료 이미지</h1>
+			
+				<h2>우리의 관대한 커뮤니티를 통해 공유되는 1.9백만개의 이미지와 비디오를 살펴보세요</h2>
+			</div>
+			<form class ="media_search">
+			<div class="dd_box" data-left="1">
+				<span class = "image_type" style="margin-right:2px">이미지</span>
+				<i class = "dropdown_arrow"></i>
+			</div>
+			<span>
+			<input type="text" id="wh" value placeholder="이미지,벡터이미지,동영상찾기">
+			<!-- value placeholder은 사이트에서 f12로 찾은 기능
+				placeholder : text의 폰트 색상을 바꾸는데 유용?? -->		
+			</span>
+			</form>	
+			<p class = "bottom" >인기있는 이미지 : 꽃, 하늘, 우주, 배경, 고양이, 마스크, 봄, 감기, 바다, 인테리어, 설, 새해</p>
+		
+			<p class="bottom2" > Makalu의 무료 이미지 </p>
+						
+			</div>				
+			<!-- 하단의 문구들과 box를 div로 묶어서 center로 정렬 시켜줌 -->
+			
+			
+			
+			<!-- 이미지 를 안에다 block안에 넣고 싶으면  span안에 span을 작성  -->
+			<!-- 상단 이미지 불투명도 설정하려면 div를 따로 작성 -->
+			</div>
+		</body>
+	</html>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

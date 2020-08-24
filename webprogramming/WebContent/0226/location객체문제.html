@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script>
+			/*	페이지가 리로드 될때 마다 html태그안의  색상을 랜덤으로 변경해주세요 
+				3초마다 페이지가 리로드 되게 해주세요 - setInterval
+				
+				document.getElementById("result").style.color ="#ff0033";
+			
+			===============================================
+				1) 3초바다 페이지가 리로드 되도록
+				console.log("pageload");
+				f12 element 놓고 확인 (페이지 깜빡임)
+				
+				2)
+				3초마다 img태그 생성후 body에 하나씩 붙여주세요 ... 리로드랑 분리해서 하기 .. ?
+					createElement 이용
+			*/
+			window.onload=function(){
+					//setInterval(goReload,3000);
+					//함수호출할때는 ()를 작성하지 않는다. 
+					
+					
+					//2)
+					vimg ="cat";//랜덤이면 이부분을 수정
+					imgele = document.createElement("img");
+					imgele.src = "../img" + vimg +".jpg";
+					imgele.width = 100;
+					imgele.height = 100;
+					
+					document.body.appendChild(imgele);
+					//body태그 안쪽에 붙여준다. 
+				}
+			
+			function goReload(){
+					location.reload();
+					 //전역변수로 선언해줘야지만 다른 함수에서도 사용가능 하다
+					console.log("pageload");
+// 					var color="";
+// 					/* 0~255 */
+					
+// 					var red = Math.floor(Math.random()*256);
+// 						green = Math.floor(Math.random()*256);
+// 					 	blue = Math.floor(Math.random()*256);
+					 	
+// 					 	//toString(16) >> 16 진수로 변환
+// 					 color = "#"+red.toString(16)+green.toString(16)+blue.toString(16);
+					 	
+// 					 document.getElementById("result").style.color=color;
+				}
+				function stop(){
+					
+					clearInterval(a);
+				}
+			
+		
+		</script>
+		<style>
+		#result{
+			font-size : 30px;
+		}
+		
+		</style>
+		
+	</head>
+	<body>
+		<div id="result">
+			여기 색상을 변경해주세용 
+		</div>
+		<hr>
+		<button onclick="goReload();">페이지 reload</button>
+		<button onclick ="stop();">중지</button>
+			</body>
+</html>

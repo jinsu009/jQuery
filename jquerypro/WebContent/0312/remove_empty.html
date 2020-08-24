@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>remove_empty</title>
+		<script src="../js/jquery-3.4.1.min.js"></script>
+		<script>
+		
+			$(function(){
+				$("#empbtn").click(function(){
+					$("div").empty();
+					// div는 지우지 않고 안에 자식들만 지운다 (태그, 텍스트 포함)
+				});
+				
+				$("#rebtn").click(function(){
+					$("div").remove();
+					// div와 안에 자식들을 모두 지운다. 
+				});
+				
+				//pp클래스에 이벤트를 줌
+				$("p.pp").click(function(){
+					$(this).css("font-size","+=2px");
+				});
+				
+				$("#ppremove").click(function(){
+					//삭제버튼을 누름과 동시에 body에 p2를 붙인다. 
+					// 복제가 되어 붙음과 동시에 p2가 삭제된다. .. 새로 붙은 p2는 클릭을 해도 폰트 사이즈가 올라가지 않는다. 
+					$("body").append($("#p2").remove());
+				});
+				
+				$("#ppdetach").click(function(){
+					//detach로 삭제가 된것은 클릭했을때 폰트사이즈가 올라간다. 해당이벤트가 사라지지않는다. 
+					$("body").append($("#p1").detach());
+				});
+				
+				/*
+					remove : 태그가 삭제됨과 동시 이벤트도 같이 삭제 
+					detach : 태그가 삭제되어도 이벤트가 삭제되지 않는다. 
+				*/
+			});
+		
+		</script>
+		<style>
+			div{
+				width:300px;
+				height:300px;
+				background:yellow;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<div>this is a text
+			<p> this is p tag</p>
+		</div>
+		
+		<button id="empbtn">empty</button>
+		<button id="rebtn">remove</button>
+		
+		<hr>
+		<p class = "pp" id="p1">지금은 3교시 언제 끝나나.. 1</p>
+		<p class = "pp" id="p2">오늘 점심은 !!</p>
+	
+		<button id="ppremove">삭제 : remove</button>
+		<button id="ppdetach">삭제 : detach</button>
+	</body>
+</html>

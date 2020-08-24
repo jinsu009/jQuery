@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>ajax_get</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script>
+		$(function(){
+			$("button").click(function(){
+// 				$.get("../data/result2.jsp?name=임수진&age=28",function(data, status){
+// 					console.log(data.trim());
+// 					console.log(status);
+// 				});
+				$.post("../data/result2.jsp",
+						{
+							name:"임수진",
+							age:28
+						},
+						function(data,status){
+							console.log(data); console.log(status);
+						}
+				)
+			});
+		});
+		</script>
+	</head>
+	<body>
+	<!-- 
+		$.ajax() : 비동기식 ajax를 이용하여 http 요청을 전송함 
+		$.get() : 전달받은 주소로 get방식의 http 요청을 전송함 
+		$.post() : 전달받은 주소로 post방식의 http 요청을 전송함 
+		$.getScript() : 웹 페이지에 스크립트를 추가함 
+		$.getJSON() : 전달받은 주소로 get방식의 http전송을 요청하여 , 응답으로 json파일을 받음 
+		$.lode() : 서버에서 데이터를 읽은 후, 읽어들인 html 코드를 선택한 요소에 배치 
+	 -->
+	 
+	 <button>클릭</button>
+	
+	</body>
+</html>

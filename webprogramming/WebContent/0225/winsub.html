@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+		<head>
+			<meta charset="UTF-8">
+			<title>이름과 전화번호</title>
+			<script type="text/javascript">
+				function proc1(){
+					//document.ff.name.focus();
+					//focus : 확인 버튼을 눌렀을때 칸에 커서가 깜빡거리게 하는 기능
+					
+					/*
+						name, tel 값을 각각 변수로 받아오기
+						1.id로 검색해서 가져오기 
+					*/
+					
+					/*
+					var nameVal = document.getElementById("name").value;
+					var telVal = document.getElementById("tel").value;
+					*/
+					
+					var nameVal = document.getElementsByTagName("input")[0].value;
+					var telVal = document.getElementsByTagName("input")[1].value;
+					console.log(nameVal);
+					console.log(telVal);
+					
+				}
+			</script>
+		</head>
+		<body>
+			<p> 부모에 의해서 새롭게 열린 창 입니다. 데이터를 입력하기 위한 페이지 입니다.</p>
+			
+			<form name="ff" action="">
+			 	<!-- 클릭했을때 파라미터가 넘겨지는 것-->
+			 	
+			 	이름 : <input type="text" name="name" id="name"><br>
+			 	전화번호 : <input type="text" name="tel" id="tel"><br>
+			 	
+			 	<input type="button" value="확인" onclick="proc1();">
+			 
+			</form>
+		
+		
+		</body>
+</html>

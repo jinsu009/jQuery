@@ -1,0 +1,93 @@
+	<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="UTF-8">
+			<title>inputAdd(텍스트 박스 연산자)</title>
+			
+			<script type="text/javascript">
+// 				function sum(){
+					
+// 					var x= document.getElementById("x").value; //string 10
+// 					var y = document.getElementById("y").value; //string 20
+// 					/*텍스트 박스 안의 값을 가져올땐 .value사용*/
+					
+// 					document.getElementById("result").innerHTML 
+// 					= /*parseInt(x) + parseInt(y);*/
+// 						(x*1)+(y*1);
+// 					/*곱하기 1을 해줘도 string를 int로 바꿔 줄 수 잇따.*/
+// 					/*span , div 박스 일대는 innerHTML사용*/
+// 					/*string 을 int형으로 바꾼다.*/}
+// 				function min(){
+// 					var x= document.getElementById("x").value; 
+// 					var y = document.getElementById("y").value;
+// 					document.getElementById("result").innerHTML 
+// 					= (x*1)-(y*1);
+// 				}
+// 				function mul(){
+// 					var x= document.getElementById("x").value; 
+// 					var y = document.getElementById("y").value;
+// 					document.getElementById("result").innerHTML 
+// 					= (x*1)*(y*1);
+// 				}
+// 				function div(){
+// 					var x= document.getElementById("x").value; 
+// 					var y = document.getElementById("y").value;
+// 					document.getElementById("result").innerHTML 
+// 					= (x*1)/(y*1);
+// 				}
+				
+				function op(op)
+				/*함수명 op , 파라미터값 op*/
+				{
+					var x= document.getElementById("x").value; 
+					var y = document.getElementById("y").value;
+					
+					var result=0;
+					if(op == "+"){
+						
+						result
+						= (x*1)+(y*1);
+					}
+					else if(op == "-")
+					{
+// 						min();
+						result
+						= (x*1)-(y*1);
+					}
+					else if(op == "*")
+					{
+						result
+						=  (x*1)*(y*1);
+					}
+					else if(op == "/")
+					{
+						result
+						= (x*1)/(y*1);
+					}
+					 document.getElementById("result").innerHTML = result;
+					 /*태그안의 값을 가져올때는  innerHTML 사용*/
+				}
+				
+			</script>
+		</head>
+	<body>
+	
+		X : <input type ="text" id = "x"><br>
+		Y : <input type = "text" id ="y"> <br>
+		<!-- onclick = "함수이름" >>함수 호출 -->
+		<!-- 
+		<button id= "sum" onclick ="sum();">더하기</button>
+		<button id = "min"  onclick ="min();">뺄셈</button>
+		<button id = "mul"  onclick ="mul();">곱하기</button>
+		<button id = "div"  onclick ="div();">나눗셈</button>-->
+		
+		<button id = "op" onclick ="op('+')">더하기</button>
+		<button id = "op" onclick ="op('-')">빼기</button>
+		<button id = "op" onclick ="op('*')">곱하기</button>
+		<button id = "op" onclick ="op('/')">나누기</button>
+		<br>
+		
+		<span id = "result"></span>
+	
+	</body>
+	</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>checkbox_prop</title>
+		<script src="../js/jquery-3.4.1.min.js"></script>
+		<script>
+			/* 선택된 값을 가져와 보세요 (value)*/
+			$(function(){
+				$("button").on("click",function(){
+					//alert($("input[type=radio]:checked").val());
+					
+					//처음에 체크된 값만 가져온다. 
+					/* var check = $("input[type=checkbox]:checked").val();
+					 alert(check);*/
+					 
+					//체크된 모든 값을 가져온다. 
+					// each = for 문과 똑같다. 
+					/* $.each($("input[type=checkbox]:checked"), function(i, elt) {
+						//i = index번호 , elt = 끝 까지 
+						alert($(this).val() + i);
+					}); */
+					 
+					 /* textarea안에 radio버튼으로 선택된 값이랑 checkbox선택된 값을 넣어보세요 */
+					
+					 var str = "";
+					/* 
+					$("label[for=gender_female]").text();
+					$("label[for="+$("input[type=radio]:checked").attr("id")+"]").text();
+					*/
+					
+					 var gender = $("input[type=radio]:checked").val();
+					 if(gender=="male"){
+						gender="남자";
+					 }else{ gender="여자"; }
+					 
+					 str += "당신의 성별은 " + gender + " 이고,  취미는 " ;
+					
+					//alert($("input[type=checkbox]:checked").val());
+					 if($("input[type=checkbox]:checked").val()==null){
+						 //alert("b");
+						 //undefind == null 인가?
+						 str += "없습니다";
+					} 
+					 
+					 if($("input[type=checkbox]:checked").val()!=null){
+						 //alert("a");
+						 $.each($("input[type=checkbox]:checked"),function(i, elt){
+								if(i>0){ str += ","; } 
+								 var hobby = $(this).val(); 
+									str += hobby;
+							});
+						 str += "입니다";
+					 }
+					
+					 //str += " 입니다."
+					 $("textarea").val(str);
+					return false;
+				});
+			});
+		
+		</script>
+	</head>
+	<body>
+		<form>
+			<input type="radio" name="gender" value="male" id="gender_male"/>
+				<label for ="gender_male">남자</label><br>
+			<input type="radio" name="gender" value="femal" id="gender_female"/>
+				<label for="gender_female">여자</label><br>
+			<hr>
+			<input type="checkbox" name="hobby" value="여행"/>여행<br>
+			<input type="checkbox" name="hobby" value="독서"/>독서<br>
+			<input type="checkbox" name="hobby" value="요리"/>요리<br>
+			<input type="checkbox" name="hobby" value="낚시"/>낚시<br>
+			<input type="checkbox" name="hobby" value="먹방"/>먹방<br>
+			<hr>
+			<textarea rows="10" cols="30" id="box">
+			</textarea>	
+			<hr>		
+			<button>제출</button>
+		</form>
+	</body>
+</html>

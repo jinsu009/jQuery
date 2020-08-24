@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jquery기본_연습01</title>
+		
+		<script src="../js/jquery-3.4.1.js"></script>
+		
+		<script>
+		$(document).ready(function(){
+			$("h1").css("color","blue");
+			$("#para").css("background","green");
+			
+			//여러디자인을 입력할때 '메소드체이닝방식' 이라고 한다. 
+			$(".sample").css("background","green").css("color","blue");
+		});
+		</script>
+	</head>
+	<body>
+		<!--
+			 로컬에서 jquery.min.js를 가져온 후 h1 태그를 생성, id가 para인 div 생성, class가 sample인 p태그생성
+			jquery를 이용 , h1태그 글자색을 파랑 , id가 para인 태그에 배경색을 green으로,
+			class가 sample인 태그에 글자색은 파랑, 배경색은 녹색으로 지정
+		 -->
+		 
+		 <h1> jquery 기본 연습 입니다. </h1>
+		 
+		 <div id="para"> id가 para인 div태그입니다. </div>
+		 
+		 <p class ="sample"> class가 sample인 p태그입니다. </p>
+	
+	</body>
+</html>

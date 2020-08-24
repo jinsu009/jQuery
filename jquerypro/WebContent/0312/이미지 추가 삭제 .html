@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>이미지 추가 삭제</title>
+	<script src="../js/jquery-3.4.1.min.js"></script>
+			<script>
+				$(function() {
+					
+					$("span").click(function() {
+			
+						var img = $("<img/>", {
+							"src" : "../img/" + $(this).text() + ".jpg",
+							"width" : "300px",
+							"height" : "300px",
+							//아이디이용
+							"id" :"img" + $(this).text(),
+							"click" :function(){
+								$(this).after(
+									$("<button/>",{
+										"text":"삭제",
+										"click":function(){
+											//$(this).prev().remove();
+											//아이디 이용
+											$("#"+$(this).prev().attr("id")).remove();
+										}
+									}));								
+							}
+						});
+							$(this).after(img);
+					});
+				});
+			</script>
+</head>
+			<body>
+				<!-- p태그를 4~5개 정도 만들고 p태그안에 이미지 명을 작성한다. 
+				p태그를 클릭하면 이미지명에 대한 이미지를 생성하여 p태그 뒤에 붙인다. 
+				
+				p태그 뒤에 button(삭제)을 생성하여 붙인다. 
+				button을 클릭하면 이미지가 삭제된다.  
+				
+				삭제할때 prev()메소드(해당하는 태그 바로 앞에 있는 태그를 가져오는 것 )를 이용 
+				$(this).prev().remove();
+				
+				
+				next()메소드 (해당 하는 태그 바로 뒤에 있는 태그를 가져오는것 )-->
+				<hr>
+				<span id="img1" title="dalmatian">dalmatian</span>
+				<br>
+				<hr>
+				<span id="img2" title="doberman">doberman</span>
+				<br>
+				<hr>
+				<span id="img3" title="husky">husky</span>
+				<br>
+				<hr>
+				<span id="img4" title="retriever">retriever</span>
+				<br>
+				<hr>
+				<span id="img5" title="collie">collie</span>
+				<br>
+				<hr>
+			</body>
+</html>

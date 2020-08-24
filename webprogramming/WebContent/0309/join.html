@@ -1,0 +1,115 @@
+	<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="UTF-8">
+			<title>JOIN</title>
+			
+			<script src="../js/jquery-3.4.1.min.js"></script>
+			<script>
+				$(function(){
+					
+					$("input[type!=text]").css("background","yellow");
+					
+					/*$("input[type=address]").css("border","2px solid red").css("background","yellow");
+					$("input[type=birth]").css("border","2px solid blue").css("background","cyan");
+					$("input[type=number]").css("border","2px solid green").css("background","gray");*/
+				});
+		
+				function proc1(){
+					//alert("유효성체크");
+					/*
+						이름값이 공백일 경우 이름을 입력해주세요 
+						라는 alert문구를 띄우기 
+					*/
+					//document.getElementById("name").value;
+					/*form과 name에 name이 기재되엇을 경우 */
+					var name = document.ff.name.value.trim();
+					//trim : 공백제거 
+					if(name.length==0)
+						{ alert("이름을 입력해주세요 "); return false;}
+					else{
+							//한글 입력을 기본으로 두었을 때 
+							//var regname = /^[ㄱ-ㅎ가-힣]+/;
+							//ㄱ부터 ㅎ까지 가부터 힣까지 ,, +: 한번이상 나왔을경우 
+							
+							//영문입력을 기본으로 두었을 때
+							//var regname = /^[a-zA-Z]+/;
+							var regname = /^[ㄱ-ㅎ가-힣]+|^[a-zA-Z]+/;
+							if(!regname.test(name)){alert("한글또는 영문을입력해주세요");return false;}
+							
+							/*한글일때, 6자 이하 통과*/
+							/*영문일때, 5자이상 20자 이하 통과 */
+							var koname = /^[ㄱ-ㅎ가-힣]+/;
+							if(koname.test(name)){
+								if(name.length > 6){alert("6자 이하를 입력해주세요 "); return false;}
+							}
+							var engname = /^[a-zA-Z]+/;
+							if(engname.test(name)){
+								if(name.length < 5 || name.length > 21){alert("5자~20자 사이를 입력해주세요"); return false;}
+							}
+						}
+					
+					//주소체크 (공백여부)
+					var add = document.ff.add.value.trim();
+					if(add.length==0){alert("주소를 입력해주세요"); return false;}
+					
+					//생일(공백여부, 년도/월/일 형식으로 정규식 확인)
+					var birth = document.ff.birth.value.trim();
+					if(birth.length==0){alert("생일을 입력해주세요"); return false;}
+					else{
+						var regbirth = /^(19[0-9][0-9]|20\d{2})(0[0-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])$/;
+						if(!regbirth.test(birth)){alert("숫자만 입력해주세요");return false;}
+					}
+					//아이디(공백여부, 영문자만 가능, 6~8자 사이만 가능 )
+					var id = document.ff.id.value.trim();
+					if(id.length == 0){alert("id를 입력해주세요"); return false;}
+					else{
+						var regid = /^[a-zA-Z]{6,8}$/;
+						if(!regid.test(id)){alert("영문만 입력해주세요(6~8자)");return false;}
+						if(id.length > 8 || id.length < 0){alert("6~8자 사이로 입력해주세요");return false;}
+					}
+					
+					//이메일 (공백여부, ppt참고22p )
+					var email = document.ff.email.value.trim();
+					if(email.length == 0){alert("이메일을 입력해주세요"); return false;}
+					else{
+						var regemail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/;
+						if(!regemail.test(email)){alert("이메일을 양식에 맞게 입력해주세요");return false;}
+					}
+					
+					//휴대폰(공백여부, ppt참고22p)
+					var phone = document.ff.phone.value.trim();
+					if(phone.length == 0){alert("휴대폰번호를 입력해주세요");return false;}
+					else{
+						var regphone = /^\d{3}-\d{3,4}-\d{4}$/;
+						if(!regphone.test(phone)){alert("번호를 양식에 맞게 입력해주세요(000-0000-0000) ");return false;}
+					}
+					
+					//password1과 password2가 같은지 검사  
+					return true;
+				}
+			</script>
+		</head>
+	<body>
+		<form name="ff" action="form.jsp" onSubmit="return proc1();">
+	<fieldset>		
+		<legend> 회원정보입력 </legend>
+			<label for='name' >이름 : </label><input type = 'text' id ='name' name="name"><br>
+			<label for="id">아이디(6~8문자) : </label><input type = 'text' id ='id'name="id">
+			<input type="submit" value="id검사"><br>
+			<label for='add'>주소 : </label><input type = 'address' id ='add' name = "add"><br>
+			<label for='birth'>생일(yyyy-mm-dd) : </label><input type = 'birth' id ='birth' name="birth"><br>
+			<label for='email'>이메일 : </label><input type = 'text' id ='email' name="email"><br>
+			<label for='phone'>휴대폰 : </label><input type = 'number' id ='phone' name="phone"><br>
+		
+	</fieldset>	
+		<br>
+			<input type = "submit" value="확인" > <input type = "reset" value="초기화" > <br>
+		</form>
+	</body>
+	</html>
+	
+	
+	
+	
+	

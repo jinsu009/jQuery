@@ -1,0 +1,87 @@
+	<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="UTF-8">
+			<title>변수</title>
+			<script type="text/javascript">
+		
+				document.write("<br>");
+
+				var  y =1;
+				/* 수치형(number형) : 정수나 실수 (int, float, double,,...)*/
+				var z ="문자열";
+				/*문자열(string형) : "" 나 '' 로 표시'*/
+				document.write(y+z);
+				/*숫자 + 문자열 ==> 숫자는 문자열로 바뀐다.*/
+				/*document.write(y-z);*/
+				/*결과 : nan (noneofnumber)*/
+				
+				document.write("<br>");
+				
+				var bool = false;
+				/* boolean형 : true, false*/
+				document.write(bool);
+				
+				document.write("<br>");
+
+				/*초기화 되지 않았을 경우 undefined라는 값이 들어있따.*/
+				var x;
+				document.write("함수 밖 >> " + x); //전역변수
+				//함수
+				document.write("<br>");
+
+				//str ="전역변수"; //전체적으로 사용하는 변수 (var가 없으면 전역변수 )
+				
+				function myFunc(x){
+					//alert("함수 안 >> 함수호출  .." +x); //지역변수
+					var str ="지역변수"; //새로 정의된 지역변수 
+					//var을 안썼을경우 전역변수를 재정의 한 것
+					//만약 밖에서 str을 선언을 안했고 함수 안에서 str만 선언햇을경우에는 전역변수가 된다. 
+					//alert(str);
+					
+					myFunc2();
+					//함수내에서 var 를 사용하면 지역변수 
+					//var를 선언하지 않으면 전역변수 
+				}
+				
+				function myFunc(){
+					alert(str);
+				}
+				
+				
+				window.onload=function(){
+					
+					var str = document.getElementById("divbox").innerHTML;
+						str = str + "<br>추가된 내요입니더."
+						document.getElementById("divbox").innerHTML=str;
+					//alert(str);
+				}
+				
+			</script>
+			
+		</head>
+	<body>
+		<button onclick="myFunc('문자열');"> 버튼클릭</button>
+		<!-- 파라미터 값에 문자열 넣고 싶으면 '스트링값' 사용 -->
+		
+		<div id="divbox">
+			divbox안에 있는내용!
+		</div>
+	</body>
+	</html>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

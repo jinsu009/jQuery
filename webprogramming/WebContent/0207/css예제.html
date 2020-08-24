@@ -1,0 +1,97 @@
+	<!DOCTYPE html>
+	<html>
+	<head>
+	<meta charset="UTF-8">
+	<title>css예제</title>
+	
+		<style type="text/css">
+/*
+			s1 s2 : s1요소에 포함된 s2요소를 선택한다 (후손관계), 우선순위가 높다
+					한칸 띄우는 건 '내 밑의 자손들을 전부 바꾸겠다' 라는 의미
+			s1 > s2 : s1요소의 직계자식요소인 s2를 선택한다.(자손관계) 
+		*/
+		body em {	color: red;}
+
+		body>h1 {	color: blue;}
+
+			/*
+				link : 방문하지 않는 링크의 스타일
+				visited : 방문한 링크의 스타일
+				hover :마우스를 올렸을때 링크의 스타일
+			*/
+		a {
+				text-decoration: none;
+				/*text-decoration : a태그만 적용이 된다. */
+			}
+
+		a:link {
+					color: red;
+			}
+
+		a:visited {
+					color: green;
+					}
+
+
+		a:hover {
+				color: white;
+				background-color: yellow;
+				}
+
+
+		div.pTag
+		{
+				/*color:#ff00ff;*/
+				color:rgb(145, 70, 20);
+				/*
+					RGB
+						00(최소값)~ff(최대값)까지의 색상을 표현(16진수로 표현)
+			
+							레드, 그린, 블루 
+			
+						text-align : 텍s스트 정렬,, default는 left이다. 
+						font-weight:bold : 텍스트 굵기 볼드체
+			
+					*/
+	
+					text-align : center;
+	
+					font-weight:bold;
+	
+	
+			}
+			/*클래스인 녀셕의 스타일을 바꾸려면 앞에 .을 부텨준다.*/
+
+
+			#p1{
+				color :#7ebd82;
+				}
+					/*p태그 앞의 #은 아이디를 말하는것이고 
+						color의 #은 컬러값을 의미*/
+
+			#p2{
+					color:#d6afa1;
+				}
+		</style>
+	
+		</head>
+		<body>
+		
+			<h1><em>h1</em>태그입니다.</h1>
+			
+			<a href = "http://ddit.or.kr"> 대덕인재개발원 </a>
+			<!-- a링크는 default로 밑줄이 그어져 있지만 스타일단에서 none을 해주면 밑줄이 사라진다. -->
+			
+			<p id = "p1" class ="pTag">여기는 p 태그 입니다. 하품은 금지 </p>
+			<p id = "p2" class ="pTag"> 여기는 p태그 두번째 입니다. </p>
+			
+			<!-- class는 중복으로 쓰되 아이디는 중복으로 사용하지 않는다 -->
+			
+			<div class ="pTag">여기는 div태그입니다.</div> <br>
+			
+			
+		
+		</body>
+	</html>
+	
+	

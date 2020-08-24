@@ -1,0 +1,86 @@
+	<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="UTF-8">
+			<title>Math객체</title>
+			<link rel="stylesheet"  href="../css/date.css" /></style>
+			
+			<style>
+			table,td {
+						border: 1px solid black;
+						width: 350px;
+					}
+			</style>
+			
+			<script src ="../js/math.js"></script>
+			
+			
+			
+		</head>
+	<body>
+	
+	<!--  자주사용하는 math함수 
+		Math.PI : 파이상수(3.14...)
+		Math.abs(x) : 절대값
+		Math.ceil(x) : 올림
+		Math.floor(x) : 내림
+		Math.rount(x) : 반올림
+		Math.max(1,2,3,4,5,6,...) : 최대값
+		Math.min(1,2,3,4,5,6,...) : 최소값
+		Math.pow(x,y) : x의 y승(지수함수)
+		Math.random(); : 0부터 1까지의 소수 난수를 발생함
+		
+		원하는 범위의 랜덤값 만들기 
+		Math.floor(Math.random()*(최대값-최소값+1)+최소값);
+		Math.floor(Math.random()*(10-1+1)+1);
+		//1부터 10까지의 랜덤 수 
+		
+	
+	 -->
+	
+	<div id ="result"></div>
+	
+	<br>
+	
+	<div class="box">
+		<h2> 숫자 맞추기 </h2>
+		<p>1~10까지의 난수를 발생후 이 값을 맞추는 프로그램을 작성하세요 </p>
+		<button onclick ="proc1();">실행</button>
+	</div>
+	
+	
+	
+	<div class="box">
+		<h2>가위바위보</h2>
+		<p>가위, 바위, 보 게임을 할 수 있는 프로그램을 작성하세요 
+		,, 컴퓨터는 랜덤을 이용 사용자는 prompt를 입력받아서 처리 </p>
+		<button onclick ="proc2();">실행</button>
+	</div>
+		
+	
+	<div class="box" id="lotto">
+		<h2>로또번호 생성</h2>
+		<p>로또번호를 생성하는 프로그램을 작성하시오 (1~45번중 6개의 번호 추첨)</p>
+		<button onclick ="proc3();">실행</button>
+		
+		
+				
+	</div>
+	
+	<div class="box">
+		<h2></h2>
+		<p></p>
+		<button onclick ="proc();">실행</button>
+	</div>
+	
+	<div class="box">
+		<h2></h2>
+		<p></p>
+		<button onclick ="proc();">실행</button>
+	</div>
+	
+	
+	
+	
+	</body>
+	</html>

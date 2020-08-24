@@ -1,0 +1,41 @@
+	<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="UTF-8">
+			<title>BoxSizing</title>
+			
+			<style type="text/css">
+				div{ width:500px;
+					 border : 20px solid #ddd;
+					 margin:20px;
+					 padding:20px;}
+					 
+				#box1{ box-sizing : content-box;}
+				/*패딩을 줬을때 내사이즈에 맞춰서 늘어나느것*/
+				#box2{box-sizing: border-box;}
+				/*테두리 선까지 합쳐서 맞춰지는거*/
+				
+				input[type=text]
+				{
+					border:2px dotted red;
+				}
+				
+				input[type=button]
+				{
+					border:2px solid blue;
+				}
+			</style>
+		</head>
+	<body>
+		<div id="box1">
+				content-box
+			</div>
+		
+		<div id="box2">
+				border-box
+			<input type="text">
+			<input type="button" value="버튼">
+		</div>		
+
+	</body>
+	</html>

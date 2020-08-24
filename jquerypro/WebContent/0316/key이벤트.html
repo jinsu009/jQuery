@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>key event</title>
+		<script src="../js/jquery-3.4.1.min.js"></script>
+		<script>
+			$(function(){
+				//keydown (키를 눌렀을때) , keyup(키를 눌렀다 뗄때)
+				
+				//$("#key").on("keypress", function(){
+				//$("#key").on("keydown", function(){
+				$("#key").on("keyup", function(){
+					$("#str").html(event.type + " : " + event.which);
+				});
+				
+				
+				//커서가 input안을 누르면 배경색 변경
+				$("#key").on("focusin",function(event){
+					$(this).css("background", "orange");
+				});
+				
+				$("#key").on("focusout",function(event){
+					$(this).css("background", "black");
+				});
+				
+				/* 
+				1) id랑 pw입력하는 핃드를 생성(html), button 생성
+				2) id에 포커스가 있으면 테두리를 점선으로 표시 
+				3) 비밀번호에 포커스가 았으면 배경색을 변경
+				4) 버튼을 누르면 해당하는 텍스 id, pw를 아래에 기입해준다. div태그에 표시되도록 
+				
+				** 추가 : fieldset , label 추가 
+				*/
+				
+				/* $("#id").on("focusin",function(event){
+					$(this).css("border","2px solid red");
+				});
+				$("#id").on("focusout",function(event){
+					$("#id").css("border","");
+				});
+				$("#pw").on("focusin",function(event){
+					$(this).css("background","cyan");
+				});
+				$("#pw").on("focusout",function(event){
+					$("#pw").css("background","white");
+				});
+				
+				$("#submit").click(function(){
+					var txt = "";
+					txt += "id >> "+ $("#id").val();
+					txt += "\n pw >> "+ $("#pw").val();
+					alert(txt);
+					$("#form").after(txt);
+// 					$("<div/>",{
+// 						$("input[type=text]").val()+","
+// 						+ $("input[type=password]").val();
+// 					}).insertAfter(this); 
+				
+				}); */
+				
+				$("input").focus(function(){
+					$(this).addClass("form");
+				});
+				$("input").blur(function(){
+					$(this).removeClass("form");
+				});
+				
+					
+				
+			});
+		</script>
+		<style>
+			.form{ background:yellow; }
+		</style>
+	</head>
+	<body>
+		<p>아래 텍스트필드에 내용을 입력하세요 </p>
+		<input type="text" id="key">
+		<p id ="str"></p>
+		
+		<hr>
+		<fieldset>
+			<legend>id, password 기입</legend>
+			<label for='id'>아이디</label><input type="text" id="id" name="id"><br>
+			<label for='pw'>패스워드</label><input type="password" id="pw" name="pw"><br>
+			<div id="form"></div>
+			<button id="submit">전송</button>
+		</fieldset>
+	</body>
+</html>

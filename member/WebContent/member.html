@@ -1,0 +1,489 @@
+	<!DOCTYPE html>
+	<html>
+	<head>
+	<meta charset="UTF-8">
+	<title>member_임수진</title>
+	<script src="./js/jquery-3.4.1.min.js"></script>
+	<script src="./js/json2.js"></script>
+	<!-- bootstrap을 이용하기 위해 사이트에서 CDN복사  -->
+	<!-- 합쳐지고 최소화된 최신 CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<!-- 부가적인 테마 -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+	<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	
+	<script>
+		// 아이디 중복확인 , jsp로 값을 넘겨서 member에 있는 아이디와 비교후
+		// 아이디를 입력후 정규화 비교 -> 정규화 위배될 경우 textfield를 초기화하고 빨간글씨가 나오도록 
+		// 정규화 조건과 일치하고 현재 존재 하지 않을경우 
+		// 보라색 글씨로 사용가능한 아이디 입니다 출력 
+		// 이미 존재하는 아이디일 경우 : 000은 탈퇴한 아이디 이거나 이미 사용중인 아이디 입니다. 
+		// 빨간색 글씨 : text창을 선택했을때 나타나도록 설정 
+		// 값이 넘어가도록 
+		/*
+			form에서 데이터를 받아서 정규식 검사 , 비밀번호 확인 검사 해야하고 
+			확인(제출) jsp로 넘어가서 insert시킨다.
+		*/
+	$(function(){
+
+			var idch = /^[a-z0-9]{6,12}$/;
+			$("#id").click(function(){
+			$("#idtext").show();
+				$("#id").blur(function(){
+					var id = $("#id").val();
+					if(id.length==0) //id를 입력하지 않았을경우
+					{
+						$("#idtext").text("아이디를 입력하세요");
+						return false;
+					}
+
+					if(!(idch.test(id))) //id가정규식에 규합하지 않을경우
+					{ 
+						$("#idtext").text("6~12자의 영소문자와 숫자 사용");	
+						return false;
+					}
+					if(id.length!=0 || idch.test(id)) //id를 알맞게 입력했을 경우
+					{
+						$("#idtext").text("중복확인을 해주세요");
+						return false;
+					}
+				});
+				
+			});
+				
+			$("#idchk").click(function(){
+				var idch = $("#id").val();
+				if(idch==""){
+					$("#idtext").text("아이디를 입력하세요");
+					return false;
+				}
+				$.ajax({
+					url : "result.jsp",
+// 					datatype:"text",
+					datatype : "JSON",
+					type:"post",
+					data: "mem_id=" + $("#id").val(),
+					success:function(data){
+						data= JSON.parse(data.trim());
+						$("#idtext").text(data.mem_id);
+// 						if(data.trim()=="1"){
+// 							$("#idtext").text("현재 사용중인 아이디 입니다.");
+// // 							return true;
+// 						}
+// 						else{
+// 							$("#idtext").text("사용가능한 아이디 입니다");
+// 						}
+					},
+					error:function(xhr)
+					{
+						if(xhr.status==404)
+						{
+							location.href="error.html";
+						};
+					}
+				});//ajax 코드 닫기 
+				
+			});//중복확인 버튼 했을때 
+
+			// 패스워드 
+// 			var pwch = /^(?=.*[a-zA-Z])((?=.*\d)|(?=.*\W)).{8,12}$/
+// 			var pwch = /^[a-zA-Z0-9!@#$%^&*+=-]{8,12}/;
+			var pwch = /^[a-zA-Z0-9\^$\(\)\*\+\.\/\?\[\]\\\{\}\|\-,!"\#%&':;<=>@_`~]{8,12}$/;
+			$("#password").click(function(){
+				$("#pwtext").text("8-12자의 영문대소문자,숫자,특수문자만 가능");
+				$("#password").blur(function(){
+				var pw = $("#password").val();
+				if(pw.length==0||!(pwch.test(pw))){
+					$("#pwtext").text("비밀번호는 숫자와 영문자를 혼합해서 사용해야합니다.");
+					return false;
+				}
+				else{
+					$("#pwtest").empty();
+				}
+				
+				});
+			});
+			
+			$("#pass_re").click(function(){
+				$("#pass_re").blur(function(){
+					var pw = $("#password").val();
+					var pwre = $("#pass_re").val(); 					
+					if(pwre.length==0){
+						$("#pwtext2").text("비밀번호를 확인해주세요");
+						return false;
+					}
+					else{
+						if(pwre.length==0||(pw!=pwre))
+						{
+							$("#pwtext2").text("비밀번호가 일치하지 않습니다.");
+							return false;
+						}
+						else{
+							$("#pwtext2").empty();
+						}
+					}
+			});
+		});
+		
+		$("#nmtext").hide();
+		$("#name").click(function(){
+			$("#nmtext").show();
+			$("#name").blur(function(){
+				var name = $("#name").val();
+				var nmch = /^[가-힣]{2,5}|[a-zA-Z]{5,10}$/;
+				if(name.length==0){
+					$("#nmtext").text("이름을 입력해주세요");
+					return false;
+				}
+				if(!(nmch.test(name))){
+					$("#nmtext").text("한글 2-5자 또는 영문 5-10자로 입력해주세요");
+					return false;
+				}else{
+					$("#nmtext").empty();
+				}
+			});
+		});
+		
+
+		/*
+			체크박스는 처음부터 선택된 상태로 시작 
+			if 체크박스가 해제된 상태 
+				>> 라디오버튼 선택 비활성화 , 경고문 " 성별을 입력하려면, 성별 제공정보에 동의해주세요 "
+			else 체크박스가 해제되었다가 다시 선택되었을 때 
+				>> 라디오 버튼 활성화 , 경고문 " 성별정보제공을 입력해주세요, 정보제공을 원치않으시면 동의를 해제해주세요 "
+				id="mara" id="fera"
+		*/
+		
+		$("#genchk").click(function(){
+			var chk = $("#genchk").is(":checked");
+			if(chk == false){
+				// 체크버튼을 선택하지않으면 성별을 입력할수 없게끔 설정 
+				$("#gentext").text("성별을 입력하려면, 성별제공정보에 제공해주세요");
+				$("input[name='mem_gender']").each(function(){
+					this.checked = false;
+				});
+				$("input[type='radio']").attr('disabled',true);
+			}
+			if(chk == true)
+			{
+				$("input[name='mem_gender']").attr('disabled',false);
+			} 
+		});
+				
+		$("input[name='mem_gender']").click(function(){
+				$("#gentext").hide();
+		});
+		
+		$("#emtext").hide();
+		$(".emailinput").click(function(){
+			$("#emtext").show();
+			$(".emailinput").blur(function(){
+				var email01 = $("#emailfir").val();
+				var email02 = $("#emailsec").val();
+				var email01ch = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*$/i;
+				// i : 정규표현식이 대소문자를 구분하지 않도록 
+				// * : 0 또는 그 이상의 문자가 연속될 수 있음을 말함 
+				var email02ch = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/;
+				if(!email01ch.test(email01))
+				{
+					$("#emtext").text("이메일을 형식에 맞게 입력해주세요");
+					return false;
+				}
+				if(!email02ch.test(email02))
+				{
+					$("#emtext").text("이메일을 형식에 맞게 입력해주세요");
+					return false;
+				}
+				if(email01!=0 && email02!=0){
+					$("#emtext").hide();
+				}
+			});
+		});
+		
+		
+		$("#hpchbox").click(function(){
+			var chk2 = $("#hpchbox").is(":checked");
+			var tel2 = $("#teltext").val();
+			if(chk2 == false){
+				  $("#teltext").click(function(){
+					  $("#hptext").text("휴대폰번호를 입력하려면, 휴대폰번호 정보제공에 동의해 주세요.");
+				  });
+			}
+			else{
+				 $("#hptext").text("휴대폰번호 정보를 입력해주세요, 정보제공을 원치않으시면 동의를 해제해주세요.");
+			}
+		});
+		
+		$("#teltext").blur(function(){
+				 var hpchk = $("#teltext").val();
+				 var hptest = /^\d{3}-\d{3,4}-\d{4}$/;
+				 if(!hptest.test(hpchk))
+				 {
+					 $("#hptext").text("휴대폰번호를 양식에 맞게 입력하세요.");
+				 }
+				 if(tel2.length!=0){
+					 $("#hptext").empty(); 	 
+				 }
+		});
+			
+// 		$("#teltext").click(function(){
+// 			$("#hptext").show();
+// 			$("#teltext").blur(function(){
+// 				var tel = $("#teltext").val();
+// 				var telch = /^\d{3}-\d{3,4}-\d{4}$/;
+// 				if(tel.length !=0){
+// 					$("#hptext").hide();
+// 					return false;
+// 				}
+// 				if(!telch.test(tel)){
+// 					$("#hptext").text("번호를 형식에맞게 입력하세요");
+// 					return false;
+// 				}
+// 			});
+// 		});
+		
+		
+		$("#submit").click(function(){
+
+			var a = $("#id").val().trim();
+			var b = $("#password").val().trim();
+			var c = $("#pass_re").val().trim();
+			var d = $("#name").val().trim();
+// 		var e = $("input:radio[name=mem_gender]").is(":checked");
+// 		var f = $("#emailfir").val();
+// 		var g = $("#emailsec").val();
+// 		var h = $("#teltext").val();
+			
+			if(a=="" || b=="" || c=="" || d==""){
+				alert("아이디,패스워드,이름 은 반드시 입력해주세요.");
+				return false;
+			}
+			return true;
+		});
+
+	});//onfucn 닫는 괄호
+	
+		function goPopup(){
+			// 주소검색을 수행할 팝업 페이지를 호출합니다.
+			// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.
+			var pop = window.open("./popup/jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+			
+			// 모바일 웹인 경우, 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrMobileLinkUrl.do)를 호출하게 됩니다.
+		    //var pop = window.open("/popup/jusoPopup.jsp","pop","scrollbars=yes, resizable=yes"); 
+		}//goPopup()
+		
+		function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo){
+		// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
+			$("#juso").val(roadAddrPart1);
+			$("#ssjs").val(addrDetail);
+			$("#zipno").val(zipNo);
+		}
+		
+	</script>
+	<style type = "text/css">
+		div{margin : 0 auto; width: 900px; height: 1000px;}
+		table th{text-align: center; background-color: #f6f6f6;}
+		.text1{ color: red; font-size : 13px;}
+		.text2{ color : purple;	font-size : 13px;}
+		
+	</style>
+	</head>
+	<body>
+	<form id="join" method = "post" action="join.jsp">
+	<div id="bigbox">
+		<h3> § 정보입력 및 본인확인 </h3>
+		<br>
+<!-- 		<table border ="1" class="table table-striped"> -->
+		<table class="table table-bordered">
+			<tr>
+			<th><label for= "id">아이디</label></th>
+			<td>
+				<input type ="text" id = "id" name="mem_id" >
+				<input type="button" id="idchk" class="btn btn-default" value="중복확인"/><br>
+<!-- 				<span id="idtext" class="text1">6~12자의 영소문자와 숫자 사용</span> -->
+				<span id="idtext" class="text1"></span>
+<!-- 				<span id="idtextok" class="text2">사용가능한 아이디 입니다</span> -->
+			</td>
+			</tr>
+			
+			<tr>
+				<th><label for="password">비밀번호</label></th>
+				<td>
+					<input type="text" id="password" name="mem_pass" maxlength="12"><br>
+<!-- 					<span class="text1" id="pwtext">8~12자의 영문대소문자, 숫자, 특수문자만 가능</span>	 -->
+						<span class="text1" id="pwtext"></span>
+				</td>
+				
+			</tr>
+						<tr>
+				<th><label for= "pass_re">비밀번호 확인</label></th>
+				<td>
+					<input type ="text" id="pass_re" name="pass_re"><br>
+<!-- 					<span class="text1" id="pwtext2">비밀번호를 다시 확인해주세요</span>	 -->
+					<span class="text1" id="pwtext2"></span>	
+				</td>
+			</tr>
+			
+			<tr>
+				<th><label for= "name">이름</label></th>
+				<td>
+					<input type="text" id="name" name="mem_name"><br>
+					<span class="text1" id="nmtext">이름을 입력해주세요</span>
+				</td>
+			</tr>
+			
+			<tr>
+			<th>성별</th>
+			<td>
+				<input type ="radio" name="mem_gender" value="male" id="mara">남자
+				<input type ="radio" name="mem_gender" value="female" id="fera">여자
+				<input type= "checkbox" id="genchk" name="getBygender" checked = "checked"> 선택정보(성별)수집 및 이용 동의<br>
+				<span class="text1" id="gentext"></span>
+				<!-- check박스를 선택하지 않으면 성별을 선택할수 없도록 한다. -->
+			</td>
+			</tr>
+			
+			<tr>
+			<th>생년월일</th>
+			<td>
+				<select name = "year" id="year" > 
+<!-- 				<option value="value값">text</option> -->
+				<option value="2002">2002</option>
+				<option value="2003">2003</option>
+				<option value="2004">2004</option>
+				<option value="2005">2005</option>
+				<option value="2006">2006</option>
+				<option value="2007">2007</option>
+				<option value="2008">2008</option>
+				
+				</select> 년
+				
+				<select name = "month" id="month" > 
+				<option value="01">1월</option>
+				<option value="02">2월</option>
+				<option value="03">3월</option>
+				<option value="04">4월</option>
+				<option value="05">5월</option>
+				<option value="06">6월</option>
+				<option value="07">7월</option>
+				<option value="08">8월</option>
+				<option value="09">9월</option>
+				<option value="10">10월</option>
+				<option value="11">11월</option>
+				<option value="12">12월</option>
+				
+				
+				</select> 월
+				
+				<select name = "day" id="day" > 
+				<option value="01">1일</option>
+				<option value="02">2일</option>
+				<option value="03">3일</option>
+				<option value="04">4일</option>
+				<option value="05">5일</option>
+				<option value="06">6일</option>
+				<option value="07">7일</option>
+				<option value="08">8일</option>
+				<option value="09">9일</option>
+				<option value="10">10일</option>
+				<option value="11">11일</option>
+				<option value="12">12일</option>
+				<option value="13">13일</option>
+				<option value="14">14일</option>
+				<option value="15">15일</option>
+				<option value="16">16일</option>
+				<option value="17">17일</option>
+				<option value="18">18일</option>
+				<option value="19">19일</option>
+				<option value="20">20일</option>
+				<option value="21">21일</option>
+				<option value="22">22일</option>
+				<option value="23">23일</option>
+				<option value="24">24일</option>
+				<option value="25">25일</option>
+				<option value="26">26일</option>
+				<option value="27">27일</option>
+				<option value="28">28일</option>
+				<option value="29">29일</option>
+				<option value="30">30일</option>
+				<option value="31">31일</option>			
+				</select> 일
+				
+			</td>
+			</tr>
+			
+			<tr>
+			<th><label for= "emailfir">이메일</label></th>
+			<td>
+				<input type ="text" id="emailfir" class="emailinput" name ="mem_email01">
+				@
+				<input type ="text" id="emailsec" class="emailinput" name ="mem_email02"><br>
+				<span id= "text" class="text2">아이디나 비밀번호를 찾기위해 	사용되오니 정회원 정보로 입력하시기 바랍니다.</span><br>
+				<span class="text1" id="emtext">이메일을 입력해주세요</span>
+			</td>
+			</tr>
+			
+			<tr>
+				<th><label for= "zipno">주소</label></th>
+			<td>
+				<table>
+					<tr>
+						<td><label for= "zipno">우편번호:</label></td>
+						<td><input type="text" id="zipno" name="mem_jsb"></td>
+						<td><input type="button" class="btn btn-default"id="zipserbtn" onclick="goPopup();" value="번호검색"/></td>
+						</tr>
+					<tr>
+						<td><label for= "juso">주소:</label></td>
+						<td><input type="text" id="juso" name="mem_juso"></td>
+					</tr>
+					<tr>
+						<td><label for= "ssjs">상세주소:</label></td>
+						<td><input type="text" id="ssjs" name="mem_ssjs"></td>
+					</tr>
+				</table>
+			</td>
+			</tr>
+			
+			<tr>
+				<th><label for= "tel">휴대폰</label></th>
+				<td>
+					<input type="text" id="teltext" name="mem_hp" maxlength="13">
+						<input type="checkbox" id="hpchbox" checked="checked"> 선택정보(휴대폰)수집 및 이용 동의<br>
+					<span id= "text" class="text2">아이디나 비밀번호를 찾기위해 사용되오니 정회원 정보로 입력하시기 바랍니다.</span><br>
+<!-- 					<span class="text2" id="hptext">휴대폰 번호를 입력하려면, 휴대폰번호 정보제공에 동의해주세요</span> -->
+					<span class="text1" id="hptext"></span>
+					
+				</td>
+			</tr>
+			
+<!-- 			<tr> -->
+<!-- 			<th>인증방법</th> -->
+<!-- 			<td> -->
+<!-- 			<input type = "radio" name = "confirm" id ="hpconfirm"> 휴대폰 -->
+<!-- 			<input type = "radio" name = "confirm" id ="emconfirm"> 이메일 -->
+<!-- 			<button onclick = "" class="btn btn-default">인증</button><br> -->
+<!-- 			<span id= "text">휴대폰 인증을 위한 인증번호 발송은 1일 최대 3회까지 가능합니다.</span> -->
+<!-- 			</td> -->
+<!-- 			</tr> -->
+			
+<!-- 			<tr> -->
+<!-- 			<th><label for= "connum">인증번호</label></th> -->
+<!-- 			<td> -->
+<!-- 				<input type ="text" name = "connum" id="connum"> -->
+<!-- <!-- 				<button onclick = "alert('확인?');" class="btn btn-default">확인</button> -->
+<!-- 				<button class="btn btn-default">확인</button> -->
+<!-- 			</td> -->
+<!-- 			</tr> -->
+				
+		</table>
+<!-- 			<span id= "text1"> ※ 교사 회원님을 위한 교사인증은 가입 후 회원정보수정에서 인증하실 수 있습니다.</span> -->
+			<br><br>
+			<div style="margin:0 auto; text-align: center;">
+<!-- 				<input type = "submit" value ="확인"> -->
+				<button type="submit" id="submit">submit</button>
+			</div>
+		</div><!-- bigbox -->
+	</form>
+	</body>
+	</html>

@@ -1,0 +1,228 @@
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Array Object</title>
+		<script type="text/javascript">
+			var str = [];
+			var str2 = new Array();
+			
+			str = ["정주환","김철희","홍종욱","정영수","홍종욱"];
+			
+			function proc1(){
+				//str 배열을 출력해 보세요
+				console.log(str);
+				
+				for(var i =0; i<str.length; i++)
+					{
+						console.log(str[i]);
+						//콘솔은 어차피 한줄씩 출력되므로 br이 필요가 없다. 
+					}
+				
+				for( var i in str)
+					{
+						console.log(str[i]);
+					}
+			}
+			
+			function proc2(){
+				//indexOf() : 찾는 자료에 맞는 인덱스 값을 가져온다
+				// 만약 배열에 찾는 자료의 값이 없으면 -1이 나온다. 
+							
+				var idx = str.indexOf("정영수");
+				console.log(idx);
+				
+				if(str.indexOf("이혁진")!=-1)
+					{
+						//이혁진이라는 텍스트가 str배열에 존재할경우 
+						
+					}
+			}
+			
+			function proc3(){
+				
+				var index = str.lastIndexOf("홍종욱");
+				// 배열의 맨뒤에서 부터 검색한다. 
+				
+				var index2 = str.indexOf("홍종욱");
+				// 배열의 맨 앞에서 부터 검색한다. 인덱스 값은 항상 고정 
+				console.log(index);
+				console.log(index2);
+				
+			}
+			
+			//proc1();
+			//proc2();
+			//proc3();
+			
+			function proc3_1(){
+				/*
+					prompt를 이용하여 배열에 있는 이름을 검색한 후에 이름에 해당하는 index값을 출력
+					만약 배열에 없는 이름이라면 없는 이름입니다. 라고 출력
+					
+					str.indexOf(name,index);
+					
+					name은 검색할 키워드, index는 검색할 부분의  인덱스 
+					키워드가 index에 잇는 여부를 검사할때 사용
+				*/
+				
+				//var name = prompt("이름을 검색하세요");
+				var name = prompt("이름을 검색하세요");
+				var i = 0;
+				var result ="";
+				
+			while(true){
+				
+				 i = str.indexOf(name,i);
+				if(i == -1) {
+					break;
+					document.write("존재하지 않습니다");
+				}
+				result += i + "번째<br>"
+				
+				i++;
+				
+				/*var i = str.IndexOf(name,index);
+				
+				if(i == (-1))
+				{
+					//console.log("존재하지 않습니다");	
+					document.write("존재하지 않습니다");
+				}
+				
+				else
+				{
+					//console.log(str.indexOf(name,i));
+					document.write(name+","+index +"<br>");
+					
+				}*/
+			}
+			document.write(result);
+			}
+			
+			
+			//proc3_1();
+			
+			/*
+				배열에 추가 / 제거 
+				push("대상"); //배열 맨 뒤에 추가 
+				pop(); //배열의 맨 뒤의 값을 제거 
+				
+				unshift("대상"); // 배열 맨 앞에 추가 
+				shift(); // 배열 맨 앞의 값을 제거 
+			*/
+			
+			function proc4(){
+				str.push("이제경"); //뒤에다 이어붙이기 
+				str.unshift("전다희"); //앞에 붙이기 
+				document.write(str);
+				document.write("<hr>");
+				
+				str.pop();
+				document.write(str);
+				document.write("<hr>");
+				
+				
+				str.shift();
+				document.write(str);
+			}
+			//proc4();
+			
+			function proc5(){
+				var str = [1,2,3,4,5,6,7,8,9,10]; //지역변수로 재선언
+				
+				str.reverse();
+				
+				document.write(str);
+				
+				
+			}
+			//proc5();
+			 
+			function proc6(){
+				
+				var str = [34,150,10,1,100,30];
+				
+				str.sort(function(a,b){return a-b});
+				//앞에서 뒤의 수를 뺐을때 음수면 그대로 두고 양수일경우에만 순서를 바꿔준다. 
+				//bubblesort 정렬방식
+				//숫자에만해당 string는 적용되지 않는다. 
+				document.write(str);
+				
+			}
+			//proc6();
+			
+			function proc7(){
+				var str =new Array("임수진","박혜진","김태유","박정민");
+				
+				str = str.slice(1, 3);
+			/*
+				slice(start,end) : start위치 부터 end-1까지 추출
+				기존배열은 변경되지 않고 그대로 있다 . 
+				새로운 변수에 담아줘야 한다.
+			*/
+				document.write(str);
+			}
+			//proc7();
+			
+			function proc8(){
+				
+				/*
+					splice(값을 넣을 index 위치 , 삭제될 item개수, 넣을 item);
+					예) str.splice(2,0,"item");
+						>> 2번째에 item이 들어가고 0개가 삭제된다. 
+					
+						str.splice(2,1,"item");
+						>> 2번째에 item이 들어가고 1개가 삭제된다.
+				*/
+				
+				var str = ["이제경","전다희","김우경","남아름"];
+				str.splice(2, 1, "홍홍홍");
+				document.write(str);
+				
+				document.write("<hr>");
+				
+				str.splice(1, 1, "1","2");
+				document.write(str);
+			}
+			//proc8();
+			
+			function proc9(){
+				var str1 = [1,2];
+				var str2 = [3,4];
+				
+				//배열 두개를 이어 붙인다. 
+				document.write(str1.concat(str2));
+			}
+			//proc9();
+			
+			//20.02
+			
+			function proc10(){
+				
+				var arr = [1,2,3,4,5];
+				document.write("arr배열 >> " + arr + "<br>");
+				//콤마대신 다른 구분자를 넣고 싶을때 join메소드를 사용 
+				document.write("arr배열 (*구분자) >> " + arr.join("*")+"<br>");
+			}
+			proc10();
+			
+			
+		</script>
+	</head>
+	<body>
+	
+	</body>
+	</html>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

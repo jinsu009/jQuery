@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+		<meta charset="UTF-8">
+		<title>배경색 랜덤으로 변경</title>
+		
+		<script type="text/javascript">
+		
+		window.onload=function(){
+			a = setInterval(setColor,1000); //전역변수로 선언해줘야지만 다른 함수에서도 사용가능 하다
+		}
+			function setColor(){
+				var color="";
+				/* 0~255 */
+				
+				var red = Math.floor(Math.random()*256);
+					green = Math.floor(Math.random()*256);
+				 	blue = Math.floor(Math.random()*256);
+				 	
+				 	//toString(16) >> 16 진수로 변환
+				 color = "#"+red.toString(16)+green.toString(16)+blue.toString(16);
+				 	
+				document.body.style.backgroundColor=color;
+			}
+			
+			function stop(){
+				
+				clearInterval(a);
+			}
+			
+		</script>
+						
+		</head>
+		<body>
+		
+		<!-- 중지 버튼 클릭시 배경색이 멈출 수 잇도록 하는 함수 만들기  -->
+		
+		<button onclick ="stop();">머므줌</button>
+		
+		<button onclick="bgcolor();">배경색어플</button>
+		
+				<script type="text/javascript">
+					function bgcolor(){
+						a =  Math.floor(Math.random() * 255) + 0;
+						i =  Math.floor(Math.random() * 255) + 0;
+						j =  Math.floor(Math.random() * 255) + 0;
+						
+						document.body.style.backgroundColor="#"+a+j+i;
+					}
+				</script>
+		
+		</body>
+	</html>

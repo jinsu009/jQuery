@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="UTF-8">
+			<title>Insert title here</title>
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+			<script>
+			$(function(){
+				$.ajax({
+					url:"./data/book.json",
+					dataType : "json",
+					success : function(data){
+		
+						$.each(data, function(index){
+							$("<img/>",{
+								"src" : data[index].thumbnail,
+								"alt" : data[index].name
+							}).appendTo("body");
+							$("<div/>",{
+								"html": data[index].name 
+											+ "<br>"
+											+ data[index].author
+											+ data[index].publisher 
+											+ "<br>" 
+											+ data[index].price
+							}).appendTo("body");
+							
+							$("body").append("<hr>");
+						});
+						//style적용
+						$("img, div").css("float","left");
+						$("img").css("border","2px solid gray");
+						$("div").css("padding","20px");
+						$("hr").css("clear","both");
+					},
+					error:function(e){
+						alert("에러!");
+					}
+				});
+				
+			});
+			</script>
+		</head>
+	<body>
+	
+	</body>
+</html>

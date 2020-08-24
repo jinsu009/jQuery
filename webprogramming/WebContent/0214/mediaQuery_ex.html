@@ -1,0 +1,77 @@
+	<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+			<title>mediaQuery_ex(미디어 쿼리 예제)</title>
+			<style type="text/css">
+				*{ box-sizing:border-box; }
+				
+				.navbar{ background:#333; overflow:hidden; }
+				/*display: flex;*/
+				.navbar a{ float:left;  display:block; padding:20px; text-decoration: none; text-align:center; color:white;}
+				.mun{ background-color:red; column-count :3;}
+				.bar{float:left; display:block; text-decoration: none; text-align:center; color:white;
+						height : 50px; width:100px;}
+				#aside{ background-color:pink}
+				#content{ background-color:blue}
+				
+				
+				@media screen and (max-width:600px)
+				{	.navbar a{float:none; }
+					body{ background-color: green; }
+					.mun{column-count :auto; display:inline-block;}
+					.bar{float:none; }
+				}
+				
+			</style>
+		</head>
+	<body>
+		
+		<div style="background: yellow; padding:5px;">
+				<p>브라우저를 리사이징 하면 구조가 변경됩니다.</p>
+		</div>
+		
+		<div class="navbar">		
+			<a href="#">링크1</a>
+			<a href="#">링크2</a>
+			<a href="#">링크3</a>
+			<a href="#">링크4</a>
+		</div>
+		
+		<div>
+			<!-- id가 aside, content 인 두개의 div생성  600px이하면 위아래로 보여지게 601px이상이면 양옆으로 보여지게-->
+			<div class= "bar" id=aside>aside입니다.</div>
+			<div class= "bar" id=content>content입니다.</div>
+		</div>
+		
+		
+		<div>
+			<!-- 긴글을 작성 후 
+				600px 이하면 한단락으로 보여지게 
+				601px 이상이면 세단락으로 보여지게 변경 -->
+				
+			<div class="mun">
+				
+				7월 7일 활동까지는 레드와 벨벳이 확실히 양분된 모습을 보였으나, Russian Roulette 앨범 발매 이후부터 타이틀곡을 극단적인 레드나 극단적인 벨벳으로 
+				치우치는 것이 아니라 두 컬러를 적절히 융합한 멜로디와 가사의 곡을 주로 선보이고 있다. 그 이전에도 Ice Cream Cake와 Automatic은 더블 
+				타이틀로 발매하여 음악방송 활동 첫 주에 두 곡을 모두 선보이며 레드와 벨벳 컨셉을 동시에 보여주기도 하였다. 여태까지는 댄스를 같이 선보이기 용이한 
+				레드 컨셉의 곡들을 타이틀로 선정하는 경우가 더 많았다. 
+				[20]하지만 SM 측에서도 그럴 만한 것이, 레드 딱지를 붙이고 나온 곡들의 음원 성적과 벨벳 딱지를 붙이고 나온 곡들의 음원 성적 편차가 매우 크다. 
+				2015년 9월에 발매된 레드 타이틀 Dumb Dumb과 2016년 3월 발매된 벨벳 타이틀 7월 7일의 각종 음원차트에서의 차트아웃 
+				시기가 그리 차이나지 않았다는 점을 감안하면 벨벳 컨셉의 결과는 다소 성적이 부진한 감이 없지 않다. 레드벨벳이라는 그룹이 대중음악계에서 어느 정도
+				 기틀을 마련하면, 선배 그룹인 샤이니가 정규 3집을 밝고 청량한 느낌의 part 1과 매니악하고 어두운 느낌의 part 2로 나누어 발매한 것을 보면 
+				 SM에서도 본격적으로 레드벨벳이 벨벳 컨셉을 밀 수 있을 것으로 보인다.
+				 그리고 종전 세 번을 모두 레드 계열의 타이틀곡으로 활동한 뒤 수많은 우여곡절 끝에 2017년 11월에 벨벳 컨셉의 곡들로만 가득 채운 
+				 정규 2집 Perfect Velvet이 나왔다. 대중적으로 큰 성공을 거둔 전작에 비해서도 성적은 좋지 않았으나, 같은 벨벳 컨셉이었던 
+				 7월 7일과 비교해봤을 때 장족의 발전을 이룬 음원 성적을 보면 확실히 이전의 벨벳 컨셉에 비해 대중의 선호도가 높아졌다는 것[21]은 
+				 이견이 없는 사실. 지금까지의 활동 성과로 보아, 레드 컨셉은 주로 대중들에게 큰 화제와 좋은 반응을 얻고, 벨벳 컨셉은 매니아층과 
+				 평론가들에게 좋은 반응을 얻는 경향이 강하다. Bad Boy는 Be Natural, Automatic에 이은 정통파 R&B 벨벳 컨셉의 곡임에도, 
+				 현재 해외 반응이 가장 좋다.[22] 2019년 12월 23일에 발매된 Psycho 역시 해외 팬들 뿐만 아니라 국내에서도 반응이 매우 좋으며 Bad
+				  Boy의 느낌이 난다는 대중들이 많다.
+				
+			</div>
+		</div>
+		
+	</body>
+	</html>

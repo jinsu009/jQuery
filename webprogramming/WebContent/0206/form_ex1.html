@@ -1,0 +1,24 @@
+	<!DOCTYPE html>
+	<html>
+	<head>
+	<meta charset="UTF-8">
+	<title>form_ex1</title>
+	</head>
+	<body>
+	
+	<h1>이메일 전송화면</h1>
+	<br>
+	<form action = "result.jsp" method ="get">
+	<!-- method를 작성하지 않으면 default는 get이다 -->
+	<label for = "_name">이름 :</label> <input type ="text" id = "_name" name ="_name"><br>
+	<!-- id, class는 필수가 아니지만 name는 필수다 -->
+	<label for = "email">이메일 주소 : </label> <input type = "email" id="email" name="email"><br>
+	내용:<br>
+	<textarea rows ="15" cols ="50" name ="textBox"></textarea><br>
+	
+	
+	<input type ="submit" value ="전송">
+	<input type ="reset" value = "재설정">
+	</form>
+	</body>
+	</html>

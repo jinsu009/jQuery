@@ -1,0 +1,18 @@
+@CHARSET "UTF-8";
+
+p{
+	background-color :green;
+
+	
+	border : 1px solid red;
+	
+}
+
+.divBox2{
+	background-color :red;
+
+	
+	border : 1px solid red;
+}
+
+

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script>
+
+	function bookOb(booktitle,price,author){
+		
+		this.booktitle = booktitle;
+		this.price = price;
+		this.author = author;	
+		
+	}
+	
+		var book = new Array();		
+		
+		book.push(new bookOb("펭수",54000,"youtube"));
+		book.push(new bookOb("타요" ,16000,"운전사"));
+		book.push(new bookOb("뽀로로",90000,"ebs"));
+		book.push(new bookOb("코코몽" ,100000,"아무개"));
+			
+		function out(){
+		
+			for(var i in book)
+			{
+				document.write("제목 : " + book[i].booktitle +
+					"// 저자 : " + book[i].author +
+					"// 가격 : " + book[i].price+"<br>");
+			} 
+			
+			document.write("<hr>");
+		}
+		
+		function sort(sort){
+		
+		var temp = 0 ;
+		if(sort == "+"){
+			//가격 오름차순
+			book.sort(function(a,b){return a.price - b.price; });
+			
+			/* for(var i =1 ;i< book.length; i++){
+				
+				console.log(book[i-1].price +"/"+ book[i].price);
+				
+				if(book[i-1].price > book[i].price)
+					{
+						temp = book[i].price;
+						book[i].price = book[i-1].price;
+						book[i-1].price = temp;
+						
+					}
+				
+			}*/
+			document.write("<hr>");
+				for(var i in book)
+					{
+						document.write("제목 : " + book[i].booktitle +
+							"// 저자 : " + book[i].author +
+							"// 가격 : " + book[i].price+"<br>");
+					} 
+		}
+		
+		var temp = "" ;
+		if(sort == "-"){
+			//작가명 오름차순
+			book.sort(function(a,b){return a.author<b.author ? -1 : 1;});
+			
+			document.write("<hr>");
+			for(var i in book)
+				{
+					document.write("제목 : " + book[i].booktitle +
+						"// 저자 : " + book[i].author +
+						"// 가격 : " + book[i].price+"<br>");
+				} 
+			}	
+		
+		}
+		out();
+		
+</script>
+</head>
+<body>
+		<!--
+				 book객체를 생성하고 , 속성 : 책이름 (booktitle), 가격(price), 작가(author)
+				book객체를 호출하여 3개의 book객체를 만든다. 
+				
+				["뽀로로",90000,"ebs"]
+				["코코몽" ,100000,"아무개"]
+				
+				버튼을 2개 생성한 후 
+				첫번째버튼을 누르면 가격을 오름차순으로 정렬
+				두번째 버튼을 누르면 작가 오름차순으로 정렬
+				 -->
+				 
+				 
+				 
+		<button id = "sort" onclick ="sort('+')" >가격</button>
+		<button id = "sort" onclick ="sort('-')" >작가명</button>
+			
+</body>
+</html>

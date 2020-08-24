@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>DOM(documentobjectmodel)</title>
+	</head>
+<body>
+
+	<ul>
+		<li>list item 1</li>
+		<li>list item 2</li>
+		<li>list item 3</li>
+		<li>list item 4</li>
+		<li>list item 5</li>
+	</ul>
+	
+	<ul>
+		<li>summer</li>
+		<li>spring</li>
+		<li>등대</li>
+		<!-- li의 이름은 폴더에 있는이름과 동일해야한다.  -->
+	</ul>
+	<button onclick = "proc1();">실행</button>
+	
+	<ul>
+		<li onclick="proc2(this)">ccc</li>
+		<!-- this => 해당하는 줄 전체를 넘긴다.  -->
+		<li onclick="proc2(this)">cloud03</li>
+		<li onclick="proc2(this)">but</li>
+		<!-- li의 이름은 폴더에 있는이름과 동일해야한다.  -->
+	</ul>
+	<button onclick = "proc2();">실행</button>
+
+	<script>
+	
+	function proc2(ele){
+		//this의 파라미터를 받았기 때문에 받아주는 게 필요하다. 
+		strimg = ele.firstChild.data;
+		/*클릭한 요소만 이미지를 노출
+			ex) cloud03 문자를 클릭하면 li태그안에 img태그를 생성하여 이미지를 노출 시킨다. 
+		*/
+				
+		imgEle = document.createElement("img");
+		
+		imgEle.src = "../img/"+ strimg+".jpg" ;
+		imgEle.width = 100;
+		imgEle.height = 100;
+		
+		ele.appendChild(imgEle);
+	}
+	
+	function proc1(){
+		/*
+			!! 대소문자 구분 !!
+			새로운 요소 생성(이미지 요소)
+			1. 각 list의 문자를 가져온다. -- firstChild.data
+			2. 이미지 객체를 생성한다. - createElement("img")
+			3. 이미지 객체에 대한 속성을 정의 한다. 
+				이미지객체.width, 이미지객체.height, 이미지.src
+			4. 각 list의 자식으로 이미지를 추가한다. - appendChild()
+		*/
+		var list = document.getElementsByTagName("ul")[1];
+		//두번째 ul태그를 가져온다. 
+		var domlist = list.getElementsByTagName("li");
+		
+		for(var i=0; i<domlist.length; i++){
+			strimg = domlist[i].firstChild.data; 
+			// 각 문자를 갖고 와서 문자를 담는다.
+			//console.log(strimg);
+			
+			imgEle = document.createElement("img");
+			imgEle.src = "../img/"+ strimg+".jpg" ;
+			//확장자가 같아야 같은 반복문안에서 돌아갈수 있다.
+			imgEle.width = 100;
+			imgEle.height = 100;
+			
+			domlist[i].appendChild(imgEle);
+			//바다라는 텍스트 뒤에다가 imgEle태그를 붙인다. 
+			
+		}
+		
+	}
+	
+		/* 생성이 된 li태그를 가져오기 위해서 하단에 script를 생성*/
+		
+// 		var list = document.getElementsByTagName("ul")[0];
+// 		var allItems = list.getElementsByTagName("li");
+// 		/*list는 배열형태로 들어간다. */
+// 		for(var i=0; i<allItems.length; i++)
+// 			{
+// 				alert(allItems[i].firstChild.data);
+// 				/* li태그안에 있는 data를 변경하세요 
+// 					-> list item 1 의 숫자 를 11,22,33,44,55 로 변경하세요 */
+// 					allItems[i].firstChild.data=
+// 					allItems[i].firstChild.data + allItems[i].firstChild.data.slice(-1);
+// 					/*slice(-1) >> list item 5의 마지막 값을 가져온다. */
+// 			}
+// 		console.log(allItems);
+
+
+		
+
+		
+	</script>
+</body>
+</html>

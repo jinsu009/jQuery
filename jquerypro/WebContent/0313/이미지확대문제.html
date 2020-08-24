@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>이미지 확대 문제 </title>
+		<script src="../js/jquery-3.4.1.min.js"></script>
+		<script>
+			/*
+				1) span태그를 이용해서 이미지명을 작성한다. 
+				2) 해당하는 텍스트에 마우스를 오버하면 body에 해당하는 이미지가 나오도록 해주세요 
+				3) 텍스트를 마우스 아웃 하면 이미지가 없어지도록 
+				
+				*추가) 
+				1) span태그를 block태그로 만들고 크기를 설정해준다. (100*100)
+				2) 해당하는 span태그를 background color을 변경한다. 
+				3) 텍스트를 감싸고 잇는 block태그위에 마우스를 오버하면 이미지가 따라다니도록 마우스를 아웃하면 이미지가 삭제되도록 설정 
+				
+			*/
+			$(function(){
+				 $(document).on("mouseover",".img",function(event){
+					var imgname =$("<img/>", {
+						"src" : "../img/" + $(this).text() + ".jpg",
+						"width" : "200px",
+						"height" : "100px"});
+					
+					//alert(imgname);
+					$("body").append(imgname);
+				});
+				
+				$(document).on("mousemove",".img",function(event){
+					$(".img").css("top",(event.pageY -10)+"px")
+					.css("left",(event.pageX +30)+"px").fadeIn("fast");
+				});
+				
+				$(document).on("mouseout",".img",function(){
+					$("img").remove();
+				}); 
+			});
+		
+		</script>
+		<style>
+			span{ font-size : 50pt; }
+		</style>
+	</head>
+	<body>
+			<span class="img">cat</span><br><br>
+			<span class="img">snake</span><br><br>
+			<span class="img">rose</span><br><br> 
+			<hr>
+	</body>
+</html>

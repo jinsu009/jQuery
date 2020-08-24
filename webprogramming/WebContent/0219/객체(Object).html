@@ -1,0 +1,123 @@
+		<!DOCTYPE html>
+		<html>
+			<head>
+			<meta charset="UTF-8">
+			<title>객체(Object)</title>
+			
+			<script type="text/javascript">
+			
+				var arr = new Array();
+				// (내장)객체를 이용한 표현법
+				
+				// 사용자 정의 객체를 생성해 봅시다. 
+				// 방법 1 )) 객체 상수로 부터 객체 생성 하는 방법
+					
+					var myCar ={
+							//속성(property) : 명사로 표현된 것 
+							model : "bmw 520d",
+							speed : 0,
+							color : "black",
+							//메소드(method) : 동사로 표현된 것
+							brake : function(){this.speed -= 10;},
+							accel : function(){this.speed += 10;}
+				};
+				
+				console.log(myCar.speed);
+				//속성은 소괄호가 붙지 않는다. 
+				myCar.accel();
+				//메소드는 소괄호가 붙는다. 
+				console.log(myCar.speed);
+				//console : back단에서만 개발자가 확인 할 수 있도록 하는 것
+				
+				// 방법2 )) 생성자를 이용한 객체 생성하는 방법
+				
+				//function : class 개념
+				
+				function Car(model, speed, color){
+					//파라미터를 받아 초기화 시켜주자 
+					this.model = model;
+					this.speed = speed;
+					this.color = color;
+					
+					this.brake = function(){
+						this.speed -= 10;
+					}
+					this.accel = function(){
+						this.speed += 10;
+					}
+					
+				}
+				
+				var myCar = new Car("bmw 520d",0,"white");
+				console.log(myCar.color);
+				myCar.color = "yellow";
+				console.log(myCar.color);
+				
+				/*
+					accel 호출을 3변 연속해서 해주고 
+					콘솔에 speed값을 출력
+				*/
+				for(var i = 1; i<=3;i++)
+					{
+						myCar.accel();
+					}
+				console.log(myCar.speed);
+				
+				/*
+					객체를 이용한 방법으로 person객체를 만들고 
+					속성 name, age, tall
+					메소드 growup - 키가 자란다. (2cm)
+					
+					호출 : 나이를 한살 씩 먹으면 키가 2센치 씩 자란다. 
+					출력 : 나이, 키
+					
+					초기값 (name, age = 8, tall=130,)
+				*/
+				
+				var person ={
+							
+							name : "two",
+							age : 8,
+							tall : 130,
+							growup : function(){ this.age += 1; this.tall += 2;}
+					}
+				console.log(person.name);
+				console.log(person.age);
+				console.log(person.tall);
+				person.growup();
+				console.log(person.name);
+				console.log(person.age);
+				console.log(person.tall);
+				
+				
+				function person2(name, age, tall){
+					this.name = name;
+					this.age = age;
+					this.tall = tall;
+					
+					this.growup = function(){
+						this.tall += 1 ;
+					}
+					
+				}
+				
+				var person2 = new person2("구름이" , 8, 130);
+				person2.age++;
+				person2.growup;
+				console.log(person2.age + "살, " + person.tall +" cm");
+			</script>
+			
+			</head>
+		<body>
+		
+		</body>
+		</html>
+		
+		
+		
+		
+		
+		
+		
+		
+		

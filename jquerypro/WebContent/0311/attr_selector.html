@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>attr_selector (선택자)</title>
+		<script src="../js/jquery-3.4.1.min.js"></script>
+		<script>
+			$(function(){
+				//p태그의 title속성을 가지고 있는 태그에만 옵션을 줄 수 있다. 
+				$("p[title]").css("background","yellow");
+				//""를 적어주지 않는다. 
+				$("input[type=password]").css("border","2px solid red");
+				
+				$("input[type=button]").css("background","green");
+			});
+		</script>
+	</head>
+	<body>
+		<p>일반 문단입니다</p><br>
+		<p title = "툴팁으로 보입니다. "> 타이틀을 가지는 문단입니다.</p><br>
+		<input type="text">회원번호<br>
+		<input type="password">비밀번호<br>
+		<hr>
+		<input type="button" value="클릭">
+	</body>
+</html>

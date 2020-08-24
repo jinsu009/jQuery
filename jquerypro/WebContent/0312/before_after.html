@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>before_after 메소드</title>
+		<script src="../js/jquery-3.4.1.min.js"></script>
+		<script>
+		/* 버튼이 눌렸을 경우 p태그의 내용을 alert로 가져오기 */
+			$(function(){
+				$("button").not("#btn1").not("#btn2").not("#btn3").click(function(){
+					//alert($("p").text();
+					//alert($("p").eq(0).html()+$("p").eq(1).html());
+					//html은 end()가 통하지 않는다. 
+					
+					// append(p태그 안쪽으로 해서 뒤에 붙는다. ) ,after(감싸고 있는 p태그 밖으로 해서 뒤에 붙는다.  )  : p태그 뒤에 붙는다. 
+					//$("p").append("<div>append로 붙인 태그입니다.</div>");
+					//$("p").after("<div>after로 붙인 태그입니다.</div>");
+					
+					// before(감싸고 있는 p태그밖으로 해서 앞에 붙는다. ) ,prepend(p태그 안쪽으로 해서 앞에 붙는다. ) : p태그 앞에 붙는다 
+					$("p").before("<div>before로 붙인 태그입니다.</div>");
+					//$("p").prepend("<div>prepend로 붙인 태그입니다.</div>");
+					
+				});
+					
+					$("#btn1").click(function(){
+						//$("body").append($("p").clone());
+						$("p").clone().appendTo("body");
+						//두 줄은 같은 기능을 한다. 
+					});
+					
+					$("#btn2").click(function(){
+						//img태그생성  {속성}
+						 var img = $("<img/>",{
+								"src":"../img/cat.jpg","width": "100px","height":"100px"
+								});
+						 $("body").append(img);
+					});
+					
+					$("#btn3").click(function(){
+						
+						//p태그의 값을 가져와서 그것과 일치하는 이미지 파일을 가져옴 
+						//alert($("#img").text());
+						
+						 var img = $("<img/>",{
+								"src":"../img/"+ $("#img").text() +".jpg","width": "100px","height":"100px"
+								});
+						// $("#btn3").after(img);
+						 $(this).after(img);
+						 
+						 //속성값을 가져올 때 : attr
+						//alert($("#img").attr("title"));
+					});
+					
+					$("#clickImg").mouseover(function(){
+						var txt = $(this).attr("title");
+						
+						 var img = $("<img/>",{
+								"src":"../img/"+ txt +".jpg","width": "100px","height":"100px"
+								});
+						 
+						 $("#clickImg").before(img);
+					});
+				
+			});
+		</script>
+	</head>
+	<body>
+	
+		<button> 버튼 입니다. </button>
+	 	<p> 이것은 p태그 입니다. 1</p>
+	 	<!-- <p> 이것은 p태그 입니다. 2</p> -->
+	 	
+	 	<hr>
+	 	
+	 	<button id="btn1"> 복사 </button>
+	 	<button id="btn2"> 이미지 생성버튼  </button>
+	 	
+	 	
+	 	<hr>
+	 	<p title="snake" id="img">snake</p>
+	 	<button id="btn3">이미지 생성</button>
+	 	<hr>
+	 	<br><br>
+	 	
+	 <!-- 	<p id="clickImg" title="rose"> rose </p> -->
+		<br><span id="clickImg" title="rose">rose</span>
+	</body>
+</html>

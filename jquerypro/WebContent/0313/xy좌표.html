@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>xy좌표</title>
+		<script src="../js/jquery-3.4.1.min.js"></script>
+		<script>
+			$(function(){
+				$(document).mousemove(function(event){
+					var info = "page좌표 > " + event.pageX + " , " + event.pageY+"\n"
+								+ " screen좌표 >" + event.screenX + " , " + event.screenY; 
+								$("#log").text(info);
+								/*
+									페이지 좌표가 (100,100) 이상 이 되는 순가 img태그를 만들어서 이미지를 띄워주세요 
+								*/
+						var img ="";
+					if( event.pageX >= 100 && event.pageY  >=100)
+						{
+								img=
+								$("<img/>",{"width":"100px","height":"100px","src":"../img/cat.jpg"});
+							
+							$(img).appendTo("body");
+						}
+				});
+			});
+		</script>
+		<style>
+			div{width:300px; height:50px; padding:20px; border:1px solid green; text-align:center; margin:auto;}
+		</style>
+	</head>
+	<body>
+		<div id="log"></div>
+	</body>
+</html>

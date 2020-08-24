@@ -1,0 +1,87 @@
+	<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="UTF-8">
+			<title>promptAdd(prompt연산자)</title>
+			<script type="text/javascript">
+				/*연산을 한 결과 값을 아래의 write함수를 이용하여 출력*/
+				/*x값 y값을 각각 형변환 시켜줘야 한다. */
+				/*var x = prompt("첫 번째 숫자를 입력해주세요");				
+				var op = prompt("연산자를 입력해수제요","+,-,*,/ 입력");				
+				var y = prompt("두 번째 숫자를 입력해주세요");				
+				var result =0;
+				if(op == "+"){
+					result = (x*1)+(y*1);
+				}
+				if(op == "-"){
+					result = (x*1)-(y*1);
+				}
+				if(op == "*"){
+					result = (x*1)*(y*1);
+				}
+				if(op == "/"){
+					result = (x*1)/(y*1);
+				}				
+				document.write(x+op+y+"=" +result);*/
+				
+				/*
+					문제1) prompt로 숫자값을 받아서 60점 이상이면 "합격" 60점 미만이면 "불합격" 추력
+					문제2) prompt로 숫자값을 받아서 홀수값이면 "홀수" 짝수값이면 "짝수" 출력
+					문제3) prompt로 두개의 숫자를 입력받아서 같으면 "같습니다" 다르면 "다릅니다"출력
+				*/
+				
+				/*문제 1 */
+				/*
+				var a = prompt("점수를 입력하세요 ");
+					if((a*1)>=60)
+						{
+							document.write("합격입니다.");
+						}
+					if((a*1)<60)
+					{
+						document.write("불합격입니다.");
+					}
+				*/
+				
+				/*문제 2 */
+				/*
+				var b = prompt("정수를 입력하세요");
+				if((b*1)%2==0)
+					{
+						document.write("숫자"+b+" 는 짝수입니다.")
+					}
+				if((b*1)%2!=0)
+				{
+					document.write("숫자"+b+" 는 홀수입니다.")
+				}
+				*/
+				
+				/*
+				  < 비교연산자  > 
+				  '==' : 안에 내용만 비교
+				  '===' : 내용 및 타입까지 비교
+				  '!=' : 안의 내용만 비교(같지않을경우)
+				  '!==' : 내용 및 타입까지 다르면 true ,, 두개가 같지 않다고 판단했을경우 
+				*/
+				
+				/*문제 3*/
+				var c = prompt("숫자1를 입력하세요");
+				var d = prompt("숫자2를 입력하세요");
+				if((c*1) === (d*1))){
+					document.write(c+ "와"+ d +" 두 숫자는 같습니다.");
+					
+				}
+				else{
+					document.write(c+ "와"+ d +" 두 숫자는 다릅니다.");
+					
+				}
+				
+				/*값은 같고 타입은 다른경우 */
+				
+				
+			</script>
+		</head>
+	<body>
+	
+	</body>
+	</html>

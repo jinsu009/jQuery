@@ -1,0 +1,69 @@
+	<!DOCTYPE html>
+	<html>
+		<head>
+		<meta charset="UTF-8">
+		<title>드래그 앤 드롭 이벤트</title>
+		<style>
+			.box{	background:#efefef; margin-right:10px; height:auto; padding : 10px; }
+			.box div{ border : 2px dashed orange; height : auto; background : white;
+				padding : 10px; min-height:150px; }
+			img{ width : 200px; height : 200px; border-radius:200px; margin-height:10px; }
+		
+		</style>
+		<script>
+			function dragstart(){
+				console.log(event.target.id);
+				event.dataTransfer.setData("target_img", event.target.id);
+				//event.dataTransfer.setData("key", value);
+				//만약, 첫번째 이미지를 드래그 했을 경우, target_img 키 값에 img1 값을 저장한다.
+			}
+			function dropEvent(event){
+				//파라미터 값으로 event객체만 가져온다. (ondragover에서 발생되는 event)
+				imgid = event.dataTransfer.getData("target_img");
+				//img1의 값을 가져옴
+				
+				if(event.target.tagName == "IMG"){
+					//끌어다 놓은게 이미지태그였을때
+					event.target.parentNode.appendChild(document.getElementById(imgid));
+					//부모노드(div id="result")에 이어서 붙여라 라는 실행문
+				}else{
+					event.target.appendChild(document.getElementById(imgid));
+					//태그를 옯긴다고 생각하면 된다. .. 
+				}
+				
+			}
+			function dragOver(event){
+				//놓음과 동시에 drop과 drag이벤트가 동시에 수행
+				event.preventDefault();
+				//드래그를 더이상 하지 않겠다.라는 의미 
+			}
+			/*
+				drag & drop	
+			
+				- 쇼핑몰예제에 많이 사용된다. 
+				- IE에서는 잘 작동 되지 않는다. 
+					
+				draggable : 드래그 되는 요소를 true로 설정 
+				dragstart : datatransfer 객체에 setData()호출하여 데이터를 설정한다. 
+							- 드래그 시작을 할 때 해당하는 객체를 key, value값으로 설정한다. 
+				dragover : 드래그 도중 마우스가 다른 요소 위에 있을 때 발생한다. 
+							만약, 타겟 요소에서 dragover이벤트가 발생하면 드롭을 허용한다. 
+				drop : 마우스버튼을 놓았을 때, 반드시 처리할 내용
+						- dataTransfer 객체에서 getData()메소드를 이용하여 필요한 데이터를 꺼낸다. 
+			
+			*/
+		</script>
+		</head>
+	<body ondrop="dropEvent(event);" ondragover="dragOver(event);">
+		<h1>드래그 앤 드롭 </h1>
+		<div class="box" ondrop="dropEvent(event);" ondragover="dragOver(event);">
+			<h2>원하는 물건을 끌어서 옮겨주세요 </h2>
+			<div id ="result" ondrop="dropEvent(event);" ondragover="dragOver(event);"></div>
+			<br><br>
+			<img id="img1" src="../img/가구1.jpg" draggable = "true" ondragstart="dragstart(event);">
+			<img id="img2" src="../img/가구2.jpg" draggable = "true" ondragstart="dragstart(event);">
+			<img id="img3" src="../img/가구3.jpg" draggable = "true" ondragstart="dragstart(event);">
+			<img id="img4" src="../img/스포츠1.jpg" draggable = "true" ondragstart="dragstart(event);">
+		</div>
+	</body>
+	</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ajax_first</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+	$(document).ready(function(){
+		
+		
+		//버튼을 클릭했을때 로딩없이 데이터를 가져오는것을 ajax라고 한다. 
+		//예)) 회원가입 단에서 많이 사용한다.(중복확인)  
+		
+		//버튼이 여러개일때 button중 id가 btn1일경우에만 실행 
+		$("button#btn1").click(function(){
+			// 기본 ajax 가져오는 form : $.ajax('url',{})
+// 			$.ajax('./data/result.html',{
+// 				success:function(data){
+// 					console.log(data);	
+// 					$("body").append(data);
+// 				}
+// 			}); 
+		
+			$.ajax({
+				//url : './data/result.html',
+				url : './data/result.jsp',
+				type : 'get',
+				//type : 'post',
+				data : 'name=김준우&age=26',
+				//성공했을 때 
+				success : function(data){
+					alert(data);
+				},
+				//실패했을 때
+				error : function(e){
+					alert("오류!");
+				}
+			});
+		});
+	})
+</script>
+</head>
+			<body>
+			<button>버튼클릭!</button>
+			<button id="btn1">버튼클릭!2</button>
+			
+			</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

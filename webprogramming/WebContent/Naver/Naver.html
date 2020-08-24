@@ -1,0 +1,359 @@
+	<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="UTF-8">
+			<title>Naver</title>
+			<link href="https://fonts.googleapis.com/css?family=Coda+Caption:800&display=swap" rel="stylesheet">
+			<link href="https://fonts.googleapis.com/css?family=Do+Hyeon&display=swap" rel="stylesheet">
+			<link href="https://fonts.googleapis.com/css?family=Kirang+Haerang&display=swap" rel="stylesheet">
+			
+			<style>
+			
+			body{
+				background-color : gray;
+			}			
+			div{
+/* 				border : 1px solid black;  */
+				margin:0 auto;
+				width:1080px;
+				/* margin을 사용해서가운데 정렬시킨다. width값이 기술된 상태에서 기재해야한다. */
+			}			
+			#top_head{width: 100%;background-color: white;}
+						
+			#header
+			{				
+				background-color : white;				
+				height:180px;
+			}
+			
+			#sp{
+				color: gray;
+/* 				text-decoration : underline; */
+			}
+			#sp:hover{text-decoration: underline;}
+			
+			#jn{
+			  color: gray;
+			  font-family: 'Kirang Haerang', cursive;
+			}
+			#jn:hover{
+				color:red;
+			}
+			#hb{
+				color: gray;
+				font-family: 'Do Hyeon', sans-serif;
+			}
+			#hb:hover{
+				color:#8ad49d;
+			}
+			
+			#toplink{
+				position: absolute;
+				margin: -40px 0px 0px 400px;
+				font-size:13px;
+				
+			}
+			#topser{}
+			
+			#h1{}
+			
+			#h2{
+				
+				font-size:35pt;
+				display : inline-block;
+				text-align:center;
+				padding : 50px 0px 5px 0px;
+			}
+			#logo{
+					width:200px;
+					height:50px;
+					background: url(../img/sp_search.png) -5px -5px;
+					float:left;
+					}
+			#sbox{
+				border : 2px solid #03CF5D;
+				width: 470px;  
+				height: 45px;
+				float:left;
+			}
+			#sermark{
+				position:relative;
+				border : 2px solid #03CF5D;
+				width:52px;
+				height:51px;
+				float:left;
+				background-color:#03CF5D;
+			}
+			#ser_icon{
+				position:absolute;				
+				background: url(../img/sp_search.png) -5px -60px;
+				width:21px;
+				height:21px;
+			    margin: -13px 25px 7px -10px;
+				
+			}	
+			ul{display : inline; padding: 10px 2px 3px 5px;}				
+			li{	
+				display : inline;
+				width: 10px;
+				font-size : 15pt;
+			}		
+			#nav
+			{	background-color : white;
+				height:40px;				
+			}
+			#nav_01{display : inline;}
+			#nav_02{display : inline;}			
+			#nav_03{display : inline; width:200px; height:20px; margin: auto 100px;}
+			#content
+			{
+				background-color:#789484;
+				width:70%;
+				height:1470px;			
+				float:left;
+				
+			}			
+			#aside{
+				background-color:#789484;
+				width:29%;
+				height:1470px;				
+				float:right;
+			}
+			
+			#sort{
+				width:1080px;	
+				margin:0 auto;
+			}
+			
+			#footer{
+				background-color: white;
+				height:300px;	
+				clear:both;
+			}
+			
+			.hlogo{
+				font-family: 'Coda Caption', sans-serif;
+				color: #03CF5D;
+			}
+			.c{	font-size:13pt; color : #03CF5D;}
+			.b{	font-size:13pt;	color : black;}			
+			
+			#img{
+				width:740px;
+				height:120px; 
+				margin: 5px 10px 10px 10px;
+			}			
+			.hlogo_01{ color : #03CF5D;}
+			#news_01{				
+				background-color:white;
+				width:740px;
+				height:30px; 				
+			}
+			#news_01_01{
+				margin: 7px 20px 0px 0px;
+			}
+			#news_01_02{
+				margin: -18px 0px 10px 500px;
+			}
+			
+			#login{
+				font-size:10pt;
+				width:300px;
+				height:100px;
+				background-color:white;
+				margin: 10px auto;
+			}
+			#loginbox{
+				text-align:center;
+				width: 270px;
+				height: 25px;
+				background-color:#03CF5D;
+				borser-radius:10px;
+				position: absolute;
+    			margin: 10px 14px 13px 14px;
+				
+			}			
+			#login_box00{
+			    position: absolute;
+    			margin: 45px 0px 0px 15px;		
+    				
+			}
+			#login_box99{color:#888; margin: 0px 10px 10px 14px; }			
+			#id_pw_ser{display:block;position: absolute; float:left; }
+			#join{position: absolute; float:right; text-align:right;}
+			
+			.lo_00:link{ color:gray;}
+			.lo_00:VISITED{ color:gray; }
+			.lo_01{ color:#888; }			
+			.lo_01:hover{text-decoration:underline;}
+			
+			a{text-decoration : none;}
+			a:link{color: #03CF5D; }
+		
+		
+			
+			</style>
+			
+		</head>
+	
+	<body>
+	<div id="top_head">
+			<div id="header" >
+			
+							<div id="h1">
+								<a href="https://whale.naver.com/ko/?=main" target="_blank">
+									<img src ="../img/whale.jpg"/>
+								</a>
+							</div>
+		
+				<div id="h2">
+			
+					<div id="toplink">
+							<a href="https://help.naver.com/support/contents/contents.help?serviceNo=1074&categoryNo=16690" id="sp"  > 
+									네이버를 시작페이지로 </a>&gt;
+									
+							<a href="https://jr.naver.com/" id="jn" > 쥬니어 네이버 </a>
+							
+							<a href="https://happybean.naver.com/main/SectionMain.nhn" id="hb" > 해피빈 </a>
+					</div>
+				
+					<div id="topser">
+						<!-- <form action="https://search.naver.com/search.naver"> -->
+						<form action="result.jsp">
+							<a href="https://www.naver.com/" class = "hlogo"  >
+								<img id ="logo"></a>
+								
+<!-- 							<select name="selType"> -->
+<!-- 								<option value="이미지">이미지</option>	 -->
+<!-- 								<option value="컨텐츠">컨텐츠</option>							 -->
+<!-- 							</select>	 -->
+							
+							
+							<input name="query"  type="text"  id="sbox" >
+							
+<!-- 							<input name="_name" type="text"> -->
+							
+							<button type="submit" id="sermark">
+								<span id="ser_icon"></span>
+							</button>
+						</form>
+					</div>
+				
+			
+				</div>
+		</div>
+			
+		
+		
+			<div id= "nav">
+			
+				<div id="nav_01">
+					<ul class = "menu1 inline">
+						<li><a href="https://mail.naver.com/" class ="c">메일</a></li>
+						<li><a href="https://section.cafe.naver.com/" class ="c">카페</a></li>
+						<li><a href="https://section.blog.naver.com/BlogHome.nhn?directoryNo=0&currentPage=1&groupId=0" class ="c">블로그</a></li>
+						<li><a href="https://kin.naver.com/" class ="c">지식iN</a></li>
+						<li><a href="https://shopping.naver.com/" class ="c">쇼핑</a></li>
+						<li><a href="https://nid.naver.com/nidlogin.login?svctype=1&url=https%3A%2F%2Forder.pay.naver.com%2Fhome" class ="c">Pay</a></li>
+						<li><a href="https://tv.naver.com/" class ="c">TV</a></li>
+					</ul>
+				</div>
+			
+				<div id="nav_02">
+					<ul>
+						<li><a href="https://dict.naver.com/" class = "b">사전</a></li>
+						<li><a href="https://news.naver.com/" class = "b">뉴스</a></li>
+						<li><a href="https://finance.naver.com/" class = "b">증권</a></li>
+						<li><a href="https://land.naver.com/" class = "b">부동산</a></li>
+						<li><a href="https://map.naver.com/v5/?c=14233797.6591523,4350489.9018791,7,0,0,0,dh" class = "b">지도</a></li>
+						<li><a href="https://movie.naver.com/" class = "b">영화</a></li>
+						<li><a href="https://music.naver.com/" class = "b">뮤직</a></li>
+						<li><a href="https://book.naver.com/" class = "b">책</a></li>
+						<li><a href="https://comic.naver.com/index.nhn" class = "b">웹툰</a></li>
+						<li class = "b">|더보기 ▼</li>
+							<div id="nav_03" >
+								<li class = "b"> 실시간 검색어</li>
+							</div>
+					</ul>
+				</div>
+				
+				
+				
+			</div>
+		</div>
+		
+		<div id="sort">
+		
+			<div id="content">
+		
+				<div class="cont" id="img">
+					<img src="../img/imgad1.jpg" />
+				</div>
+				
+				<div class="cont" id="news_01">
+					<div id="news_01_01">
+					   <a href="https://news.naver.com/main/list.nhn?mode=LPOD&mid=sec&sid1=001&sid2=140&oid=001&isYeonhapFlash=Y" class = "b">연합뉴스 &gt;</a>
+					</div>
+					<div id="news_01_02">  
+					   <a href="https://news.naver.com/" class = "hlogo_01">네이버뉴스</a>
+					   <a href="https://entertain.naver.com/home" class = "b">연예</a> 
+					   <a href="https://sports.news.naver.com/index.nhn" class = "b">스포츠 </a>
+					   <a href="https://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=101" class = "b">경제</a></p>
+					</div>
+				</div>
+				
+				<div class="cont" id="news_02">
+				
+				</div>
+		
+				<div class="cont" id="news_img">
+				
+				</div>
+				
+				<div class="cont" id="ad_2">
+				
+				</div>
+		
+			</div>
+				
+			<div id="aside">
+			
+				<div id ="login">
+					 <div id="login_box99">네이버를 더 안전하고 편리하게 이용하세요</div>
+						<form action="Naver.html">
+							<button id = "loginbox" class="lo_00">NAVER 로그인</button>
+						</form>
+					   <div id="login_box00">
+					   		<span id="id_pw_ser">
+					   			<a href="https://nid.naver.com/user2/help/idInquiry.nhn?menu=idinquiry" class = "lo_01">아이디.</a>
+					   			<a href="https://nid.naver.com/user2/help/pwInquiry.nhn?menu=pwinquiry" class = "lo_01">비밀번호 찾기</a>
+					   		</span>
+					   		
+					   		<span id="join">
+					   			<a href="https://nid.naver.com/user2/V2Join.nhn?m=agree&lang=ko_KR&cpno=" class = "lo_01">회원가입</a>
+					   		</span>
+					   </div>				
+				</div>
+				
+				
+			</div>
+		
+		</div>
+		
+		
+		
+		<div id="footer">
+			
+			<div class="foot" id="f_1">
+			
+			</div>
+			
+			<div class="foot" id="f_2">
+			
+			</div>
+			
+		</div>
+	
+	
+	</body>
+	</html>

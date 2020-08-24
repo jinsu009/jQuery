@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>ajax_load_ex</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script>
+		//오라클 member 테이블에 있는 회원의 아이디와 비밀번호를 비교하여 로그인을 하는 html 
+			$(function(){
+				$("#my-form").submit(function(){
+				//$("button").click(function(){
+					//submit : form제출
+					//button으로는 안된다??
+					var id = $("#id").val();
+					var pw = $("#pw").val();
+					
+					//var url = "test.html";
+					
+					//var url ="data.jsp";
+					
+					var url ="jdbc.jsp";
+					//문제. data.jsp로 바꾼후에 
+					//(id, pw를 받는다. 두 값 모두 null이 아니면 div에'로그인성공', 하나라도 틀리면 '로그인실패'를 띄운다 )
+					var data = { "id":id, "pw":pw };  //별도로 하나씩 담기 
+					var params =$.param(data);//data를 파라미터변수로 담아서 변경
+					
+					$("div").load(url, params);
+					
+					
+					return false;
+					//button , input submit 은 같은 기능이지만 
+					// button은 웹규칙에 위배되면 form이 제대로 제출되지않는다. 
+					// 작성시 form태그안에 작성해야한다. 
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<form id="my-form">
+			id:<input type="text" id="id"><br>
+			pw:<input type="text" id="pw"><br>
+			<hr>
+<!-- 			<button>로그인</button> -->
+		<input type="submit" value="로그인"> 
+		</form>	
+		<div></div>
+	</body>
+</html>

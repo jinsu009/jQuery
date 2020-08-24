@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>이미지 확대</title>
+		<script src="../js/jquery-3.4.1.min.js"></script>
+		<script>
+			$(function(){
+				//$(".thumbnail").mouseover();
+				$(document).on("mouseover",".thumbnail", function(event){
+					//마우스가 올려졌을때 p태그가 생성됨과 동시에 img태그도 같이 생성이 된다. 
+					$("body").append("<p id='preview'><img src='"+$(this).attr("src")+"' /></p>");
+					/* $("#preview").css("top",(event.pageY -30)+"px")
+					.css("left",(event.pageX -30)+"px").fadeIn("9000"); */
+					
+				});
+				$(document).on("mousemove",".thumbnail",function(event){
+					//해당이미지 위에서 마우스를 옮겼을때 생겨진 이미지가 원래크기로 나타난다. 
+					//px는 임의로 넣어줘야 하고 fadein은 이미지가 나타나는 속도인데 별차이 없다.
+					//absolute를 주지 않으면 보이지 않는다. 
+					//display : none 를해서 따라다닐때만 이미지가 보이도록 설정 ??
+							
+					$("#preview").css("top",(event.pageY -10)+"px")
+					.css("left",(event.pageX +30)+"px").fadeIn("fast");
+					//마우스의 좌표를 따라다닌다. 
+				});
+				$(document).on("mouseout",".thumbnail",function(){
+					//마우스가 이미지에서 벗어나면 사라지도록 
+					$("#preview").remove();
+				});
+			});
+		</script>
+		<style>
+			.thumbnail{width:200px;}
+			#preview{ z-index:9999; position:absolute; border:1px solid #ccc; display:none;}
+		</style>
+	</head>
+	<body>
+		<img src="../img/snake.jpg" class="thumbnail"/>
+	</body>
+</html>

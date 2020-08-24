@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>대검찰청 사이트 입니다.</title>
+		<script src="../js/jquery-3.4.1.min.js"></script>
+		
+		 <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+ 		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+ 		 <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+		
+		<script>
+			$(function(){
+				
+				$(".submenu").css("display","none");
+				
+				$("#top2menu>li").mouseenter(function(){
+					if($(".submenu").is(":visible")){
+						$(".submenu").hide();
+					}
+					/* $(".submenu").slideDown(100); */
+					$(this).children(".submenu").show();
+				});
+				
+				$("#top2menu>li").mouseleave(function(){
+					if($(".submenu").is(":visible")){
+						$(".submenu").slideUp();
+					}
+				/* 	$(".submenu").slideUp(900); */
+					//밀리세컨드로 전달
+				});
+				
+				$(window).scroll(function(evt) {
+					//스크롤을 내렸을때 submenu가 사라지게끔
+					console.log($('.submenu').css("position"));
+					$(".submenu").hide("fast");
+				  
+					
+					var y = $(this).scrollTop();
+				   
+				});
+				
+				/* 1. submenu 닫힘형태로 변경
+				   2. li태그에 mouseover되면 submenu를 열림형태로 변경
+				   3. li태그를 벗어나면 (mouseout)되면 submenu를 닫힘으로 변경*/
+				   
+				   
+				var cnt =0;
+				$("#big").click(function(){
+					//5번 클릭하면 더이상 커지지 않도록
+					cnt +=1;
+					if(cnt<=5){
+						$("body").css("zoom","+=5%");
+					}
+				});
+				
+				$("#small").click(function(){
+					cnt -=1;
+					if(cnt>0){
+					$("body").css("zoom","-=5%");}
+				});
+				
+				$('.bxslider').bxSlider({
+					  mode:'horizontal', // 가로방향 수평 슬라이드
+					  auto: true, // 자동실행여부
+					  autoControls: true,
+					  stopAutoOnClick: true,
+					  pager: false, // 현재위치 페이징 표시 여부 설정
+					  slideWidth: 600 // 슬라이드 너비
+					  
+					 /*
+					 controls:false,
+					 autoHover:true, // 마우스 호버시 정지 여부
+					 moveSlides:1, // 슬라이드 이동시 개수
+   					 speed: 500, // 이동속도
+					 minSlides:4, //최소노출갯수
+					 maxSlides:4, //최대노출갯수
+					 slideMargin:5, //슬라이드 간격 
+					 */
+					});
+				   
+			});
+			
+		</script>
+		<style type="text/css">
+		html{height:100%;margin:0; padding:0;}
+		body{width:100%;height:100%;margin:0; padding:0;}
+	 	/* div{border:1px solid red; } */
+		a{ text-decoration:none; }
+		a:visited{color:black;}
+		#header { margin:0 auto; display: block; position:relative; width:1100px; height:120px;}
+		#container{width:100%;}
+		#relationBanner{height:50px;}
+		#footer{height:200px;}
+		
+		#top{ float:right; font-size:15px; position:relative;}
+		
+		#top li{display:inline-block; vertical-align: middle;}
+		
+		#big, #small { border-radius: 70%;  }
+		
+		#top2menu li{display:inline-block; width:100px;}
+		
+		#top2menu{float:left;  margin: 20px 20px 20px 80px;}
+		
+		#mainlogo{ display:inline-block; float:left;  margin: 20px auto;}
+		#sideimg1{ float:right; margin: 20px 40px 20px 20px;}
+		#sideimg2{ float:right; margin: 20px 10px 20px 20px;}
+		
+		.submenu{ width:100%; height:100px; background:white; position:fixed; left:0; z-index:999;}
+		.submenu li{ display:inline-block;  }
+		#scroll{display:inline-block; vertical-align: top;}
+		#scroll ul{display:inline-block; vertical-align: top;}
+		
+		#middle{ z-index:-99; margin:0px auto; height: 500px; width: 100%;  position:relative; background-image:url(../img/bamb.jpg); background-repeat:no-repeat;}
+
+		.bx-wrapper{ width:300px; height:180px; display:inline-block; margin: 300px 750px 0px 0px;}		
+/* 		.bx-pager-item{visibility:hidden;} */
+/* 		.bx-controls-direction{visibility:hidden;} */
+		</style>
+	</head>
+	<body>
+	<div id=header>
+		<div id="top">
+			<ul>
+				<li><a href="https://www.mois.go.kr/frt/sub/popup/p_taegugki_banner/screen.do" target="_blank">
+				<img src="../img/bg_nation.png" id="gukki"/>국가상징안내 |</a></li>
+				<li>역사체험관 |</li>
+				<li>글자크기 조정 <img id="big" src="../img/btn_plus.jpg"/><img id="small" src="../img/btn_minus.jpg"/> |</li>
+				<li>
+					<select name="nation">
+						<option value="korea">korea</option>
+						<option value="english">english</option>
+						<option value="chinese">chinese</option>
+						<option value="japanese">japanese</option>
+					</select>				
+				</li>
+			</ul>			
+		</div><!-- top -->
+	
+		<div id="top2"> 
+				<div id="mainlogo"><a href="http://www.spo.go.kr/site/spo/main.do">
+				<img src="../img/biglogo.png"/></a></div>
+			<ul id="top2menu">
+				<li><a href="">참여민원</a><div class="submenu"> 메뉴 내용입니다.1 </div></li>
+				<li><a href="">검찰활동</a><div class="submenu"> 메뉴 내용입니다.2</div></li>
+				<li><a href="">정보자료</a><div class="submenu"> 메뉴 내용입니다.3 </div></li>
+				<li>
+					<a href="">알림소식</a>
+					<div class="submenu" style="text-align:center;">
+						<span>알림소식</span>
+						<div id="scroll">
+							<ul>
+								<li><a href="">공지사항</a></li>
+								<li><a href="">고시*공고</a></li>
+								<li><a href="">검찰발표자료</a></li>
+								<li><a href="">검찰소식</a>
+									<ul>
+										<li><a>생생포토</a></li>
+										<li><a>생생영상<img src="../img/blt_newwin.png"/></a></li>
+										<li><a>뉴스레터</a></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					 </div>
+				</li>
+				<li><a href="">정보공개</a><div class="submenu"> 메뉴 내용입니다.5 </div></li>
+				<li><a href="">검찰소개</a><div class="submenu"> 메뉴 내용입니다.6 </div></li>
+			</ul>
+		</div><!-- top2 -->
+		<div id="sideimg1"><img src="../img/btn_allmenu.png" /></div><!-- 메뉴이미지 -->
+		<div id="sideimg2"><img src="../img/btn_sch.png" /></div><!-- 돋보기이미지 -->
+		
+		
+	</div><!-- header -->
+		<!-- <div class="submenu"> 메뉴 내용입니다. </div> -->
+		
+		<div id="middle" style="">
+			<p style="position:absolute; text-align:center; color:white; margin:150px 750px 500px 400px; font-size:54px; letter-spacing:-5px; ">국민과 함께하는 검찰</p>
+			<div class="bxslider" style=" display:inline-block; position:absolute; width:300px; height:180px; margin: 0 auto;">
+				<div><img src="../img/middle_ad.png" style="width:300px; height:180px;"/></div>
+				<div><img src="../img/middle_ad2.jpg" style="width:300px; height:180px;"/></div>
+				<div><img src="../img/middle_ad3.png" style="width:300px; height:180px;"/></div>
+			</div>
+			
+		</div><!-- middle -->
+	<div id="container" class="main">
+		<div id="content">
+			<div class="mainTop"></div>
+			<div class="mainCont svc"></div>
+			<div class="mainCont noti"></div>
+			<div class="mainCont etc"></div>
+		</div><!-- content -->
+	</div><!-- container  -->
+	<div id="relationBanner"></div><!-- relationBanner -->
+	<div id="footer"></div><!-- footer -->
+		
+
+	</body>
+</html>

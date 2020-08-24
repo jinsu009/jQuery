@@ -1,0 +1,79 @@
+	<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="UTF-8">
+			<title>Insert title here</title>
+			
+			<style type="text/css">
+			/*css정의*/
+			</style>
+			
+			<script>
+			
+			
+			
+			/*자바스크립트 정의*/
+			
+			/*함수 함수명*/
+			function myFunc(){
+				alert("함수호출입니다.");
+				myFunc2();
+				/*함수 안에서 함수를 호출*/
+			}
+			function myFunc2(){
+				alert("함수 호출입니다.2")
+			}
+			
+			/*선언을 var로 한다.*/
+				var now;
+				now = new Date();
+				
+				document.write(now);
+				/*document.write(now); : 바디 태그에 now변수의 값을 출력*/
+				
+				document.write("<br>hello world<br>");
+				
+				document.write("<div style='width:100px; height:100px;background-color:yellow;'>여기는 div입니다.</div>")
+				
+				
+				
+			</script>
+			
+		
+			
+			
+		</head>
+	<body>
+	
+		<button onclick="myFunc()"> 버튼클릭</button>
+		
+		<div id="divBox">
+			
+		
+		</div>
+		<script>
+			document.getElementById("divBox").innerHTML="임수진";
+			/*id가 divbox인 녀석을 가지고 오고 해당 div안에 값을 넣는다.
+			head부분에 적을때 딜레이가 많이 생긴다.*/
+			
+		
+		</script>
+		
+		
+	
+	</body>
+	</html>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

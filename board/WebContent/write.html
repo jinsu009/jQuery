@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Insert Board</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- Font Awesome -->
+		<link rel="stylesheet" href="bootstrap/plugins/fontawesome-free/css/all.min.css">
+		<!-- Ionicons -->
+		<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+		<!-- Theme style -->
+		<link rel="stylesheet" href="bootstrap/dist/css/adminlte.min.css">
+		<!-- summernote -->
+		<link rel="stylesheet" href="bootstrap/plugins/summernote/summernote-bs4.css">
+		<!-- Google Font: Source Sans Pro -->
+		<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="js/jquery-3.4.1.min.js"></script>
+	  	<script src="js/json2.js"></script>
+	  	<script>
+	  	
+	  	function getUrlParams() {
+		    var params = {};
+		    window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(str, key, value) { params[key] = value; });
+		    return params;
+		}
+		//java script request .. getparam값 가져옴 
+		// 정규식으로 key, value값을 가져옴 
+		
+		$(function(){
+			/*$("#form1").submit(function( event ) {
+				 var params = $("#form1").serialize(); // serialize() : 입력된 모든Element(을)를 문자열의 데이터에 serialize 한다.
+				// alert(params);
+				 return false;
+			});*/
+			
+			params = getUrlParams();
+// 			if(params.seq == undefined){
+			if(params.board_no == undefined){
+				// 글번호가 없다면 새글작성 
+				$.ajax({
+					url :"UpdateServlet",
+					type: 'post',
+					data: $("#form1").serialize(),//폼 데이터 전송시 파라미터 자동으로 구성
+			        contentType: 'application/x-www-form-urlencoded; charset=UTF-8'
+				})
+				.done(function(data){
+					alert(data.trim());
+					
+				}); 
+			}else{
+				// seqno가 있다면 글 수정 			
+				$.ajax({
+					url :"UpdateServlet",
+					type: 'get',
+// 			        data: "seq="+params.seq	
+					data: "seq="+params.board_no	
+				})
+				.done(function(data){
+					alert(data.trim());
+					
+					
+				}); 
+			}
+			
+			$("#submitBtn").click(function(){
+// 				var params = $("#form1").serialize(); 
+					// serialize() : 입력된 모든Element(을)를 문자열의 데이터에 serialize 한다.
+					// serialize() : form안에 있는 name들을 자동을 생성해서 붙여준다. 
+					// serialize() : 자동으로 form이 생성되어 만들어진다. 
+					// data: "subject" +$("#subject").val(); 처럼 길게 작성할 필요가 없다.
+// 				 alert(params);
+				 $.ajax({
+						url : "BoardWrite",
+						type: 'POST',
+				        data: $("#form1").serialize(), // 폼 데이터 전송시 파라미터 자동으로 구성
+				        contentType: 'application/x-www-form-urlencoded; charset=UTF-8'	
+					})
+					.done(function(data){
+						// data = jsp에서 받아온 파일을 담아둠 
+						
+// 						alert(data.trim());
+						/*
+							성공이면 -> list.html로 연결
+							실패이면 -> alert("저장에 실패하셨습니다. 다시 시도해주세요")
+						*/
+					
+						var str = data.trim();
+						var str2 = "저장성공";
+						var a = str.indexOf(str2);
+						if(a>0){
+							alert("저장에 성공했습니다.")
+							location.href="list.html";
+						}else{
+							alert("저장에 실패했습니다. 다시 시도해주세요 ");
+						}
+						
+						// ajax의 실패, 성공 여부만이 done과 fail에 넘어가고 
+						// DB에 데이터가 넘어갔는지 아닌지는 다시 done으로 온다. 
+						// write.jsp에 있는 status를 불러온다.
+						
+					});
+			});
+		});
+		 
+		    /* jQuery.ajax({
+		        url: '샘플ajax.php',
+		        type: 'POST',
+		        data:params,
+		        contentType: 'application/x-www-form-urlencoded; charset=UTF-8', 
+		        dataType: 'html',
+		        success: function (result) {
+		            if (result){
+		                // 데이타 성공일때 이벤트 작성
+		            }
+		        }
+		    }); */
+			/* $(function(){
+				$.ajax({
+					url :"BoardWrite",
+					data:;			
+				})
+				.done(function(data){
+					alert(data.trim());
+				})
+				;	  			
+			});
+		 */
+	
+	</script>
+	</head>
+	<body>
+		<form id="form1">
+		   <div> 
+		   <hr>
+		    <p class="text-sm mb-0">
+		   	<span><label for="subject">제목 : </label></span><input type="text" name="subject" id="subject" style="width:500px;">
+		   	<span><label for="writer">작성자:</label></span><input type="text" name="writer" id="writer" style="width:100px;">
+		   	</p>
+		   	<p class="text-sm mb-0">
+		   	</p>
+		   </div>
+	       <div>
+	         <textarea class="textarea" placeholder="Place some text here" name="content"
+	                   style="width: 100%; height: 500px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+	       </div>
+	       <p class="text-sm mb-0"></p>
+	       <div style="text-align: center;">
+	       	<input type="button" id="submitBtn" value="제출">
+	       	<input type="button" id="updateBtn" value="수정">
+	       </div>
+		</form>
+	
+		<!-- jQuery -->
+		<script src="bootstrap/plugins/jquery/jquery.min.js"></script>
+		<!-- Bootstrap 4 -->
+		<script src="bootstrap/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<!-- AdminLTE App -->
+		<script src="bootstrap/dist/js/adminlte.min.js"></script>
+		<!-- AdminLTE for demo purposes -->
+		<script src="bootstrap/dist/js/demo.js"></script>
+		<!-- Summernote -->
+		<script src="bootstrap/plugins/summernote/summernote-bs4.min.js"></script>
+		<script>
+		  $(function () {
+		    // Summernote
+		    $('.textarea').summernote();
+		  })
+		</script>
+</body>
+</html>

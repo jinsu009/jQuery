@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script>
+			$(function(){
+				$("button").click(function(){
+					$.ajax({
+						url:"./data/result.json",
+						dataType : "json",
+						success : function(data){
+							
+							$.each(data, function(index){
+								$("body").append("<br>");
+								$("body").append("이름 :" + data[index].name+" \t나이 : "+data[index].age);
+							});
+// 							console.log(data.name);
+// 							console.log(data.age);
+						}
+					});
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<button>click!</button>
+	
+	</body>
+</html>

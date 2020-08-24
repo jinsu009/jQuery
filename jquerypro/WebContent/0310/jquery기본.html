@@ -1,0 +1,51 @@
+	<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="UTF-8">
+			<title>Insert title here</title>
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+			<!-- 외부스트립트를 가져올경우 반드시 인터넷에 연결되어있어야 하고 그렇지 않을경우 js파일을 다운받아 담아줘야 한다.  -->
+			<script>
+			//$ 무력화 .. 다른 framework랑 충돌방지 
+			//dojo , jquery 전부 $를 사용했을때 $대신 jquery로 바꿔준다.
+				$.noConflict();
+				
+			
+			//javascript의 window.onload와 동일
+				jQuery(document).ready(function(){
+				/* 	//document.getElementsByTagName("h1").style.color="red";
+					$("h1").css("color","red");	
+					//선택자를 축약하여 기술할수 있도록 했다.
+					
+					//document.getElementById("box").style.backgroundColor="pink";
+					$("#box").css("background","pink");
+					// #:id 호출
+					
+					$("p").css("color", "orange");
+					//태그 호출 
+					
+					$(".p").css("color","blue");
+					// . : class 호출  */
+					
+					jQuery("body > p").css("color","blue"); //자식만 변경
+					jQuery("body p").css("color","red"); //후손 모두 변경
+					//자식도 후손이므로 p태그 색상이 전부 red가 된다. 
+					
+				});
+			
+			</script>
+		</head>
+	<body>
+		<h1> this is heading.</h1>
+		<div id="box">
+			div box 입니다.
+			
+			<div id="box2">
+				<p>div box2 안에 p태그 입니다. </p>
+			</div>
+		</div>
+		<p class ="p">
+			p태그 입니다. 
+		</p>
+	</body>
+	</html>

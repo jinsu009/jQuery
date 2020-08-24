@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>ajax_mem_join</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script>
+			$(function(){
+				$("#join").submit(function(){
+					var id = $("#id").val();
+					var pw = $("#pw").val();
+					var pw2 = $("#pw2").val();
+					var name = $("#name").val();
+					var add1 = $("#add1").val();
+					var add2 = $("#add2").val();
+					var tel = $("#tel").val();
+					
+					if(pw!=pw2){
+						alert("비밀번호가 다릅니다.");
+						return;
+					}
+					
+					var url = "jdbc_insert.jsp";
+					var data ={"id":id,"pw":pw,"pw2":pw2,"name":name,"add1":add1,"add2":add2,"tel":tel};
+					var params = $.param(data);
+					
+					$("div").load(url, params);
+					
+					return false;
+				});
+			});
+		</script>
+	</head>
+	<body>
+	<form id="join">
+		<h3>회원가입</h3><br>
+		ID : <input type="text" id="id"/><br>
+		비밀번호 : <input type="password" id="pw"/><br>
+		비밀번호 확인 : <input type="password" id="pw2"/><br>
+		이름 : <input type="text" id="name"/><br>
+		주소1 : <input type="text" id="add1"/><br>
+		주소2 : <input type="text" id="add2"/><br>
+		전화번호 :  <input type="text" id="tel"/><br>
+		<hr>
+		<input type="submit" value="로그인"/><br>
+	</form>
+	<div></div>
+	
+	</body>
+</html>

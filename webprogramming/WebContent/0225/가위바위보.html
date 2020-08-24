@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>가위바위보</title>
+		<style>
+		
+		table td{
+		text-align:center;
+		font-size : 20pt;
+		}
+		
+		#userfont{
+			background-color:#d15a64;
+			
+		}
+		#comfont{
+			background-color:#ded26a;
+		}
+		
+		</style>
+		<script> 
+		
+			user = ["../img/가위_좌.png","../img/바위_좌.png","../img/보_좌.png"];
+			com = ["../img/가위_우.png","../img/바위_우.png","../img/보_우.png"];
+			
+			function start(){
+			
+				var a = (prompt("가위, 바위, 보 입력"));				
+				if(a=="가위") document.getElementById("userimg").src = user[0];
+				if(a=="바위") document.getElementById("userimg").src = user[1];
+				if(a=="보") 	document.getElementById("userimg").src = user[2];
+				
+				z =  Math.floor(Math.random() * com.length);		
+					document.getElementById("comimg").src = com[z];
+					
+				compu=["가위","바위","보"];
+				var comre = compu[z];
+				
+				if((a=="가위"&&z==0)||(a=="바위"&&z==1)||(a=="보"&&z==2))				
+					{ document.getElementById("result").innerHTML="비겼습니다.  사용자 >> " +a + ",  컴퓨터 >> " + comre; }
+				if((a=="가위"&&z==1)||(a=="바위"&&z==2)||(a=="보"&&z==0))	
+					{document.getElementById("result").innerHTML="사용자가  졌습니다.  사용자 >> " +a + ",  컴퓨터 >> " + comre; }
+				if((a=="가위"&&z==2)||(a=="바위"&&z==0)||(a=="보"&&z==1))			
+					{document.getElementById("result").innerHTML="사용자가 이겼습니다.  사용자 >> " +a + ",  컴퓨터 >> " + comre;}
+				
+			}
+		
+		</script>
+	</head>
+<body>
+	<table border="1">
+	<tr><td colspan="2" style=text-align:center><button onclick="start();"> 게임 시작</button></td></tr>
+	
+	<tr>
+		<td><div id="userfont">사용자</div></td>
+		<td><div id="comfont">컴퓨터</div></td></tr>
+	<tr>
+	<td><div><img id="userimg" src="../img/가위_좌.png" /></div></td>
+	<td><div><img id="comimg" src="../img/가위_우.png" /></div></td>
+	</tr>
+	<tr><td colspan="2"><div id="result"></div></td></tr>
+			
+	</table>
+</body>
+</html>

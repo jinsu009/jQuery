@@ -1,0 +1,42 @@
+	<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="UTF-8">
+			<title>z-index</title>
+			<style>
+				#box1{
+					z-index:200;
+					/*z-index는 상대적인 값이라 마이너스이면 뒤로 가고 하나라도 크면 앞으로 나오도록 한다.
+					   값이 동일하면 태그 순서대로 진행된다. */
+					position:absolute; 
+					left :0; top:0;
+					/*브라우저의 (0,0)에 딱 맞게 준다. 
+					  브라우저가 가지고 있는 패딩의 기본값??*/
+					width : 100px; height:100px; background-color:blue;
+				}
+				#box2{
+/* 					display:none; */
+					position:absolute;
+					left :30px; top:30px;
+					width : 100px; height:100px; background-color:yellow;
+				}
+				#box3{
+/* 					display:none; */
+					z-index:-200;
+					position:absolute;
+					left :50px; top:50px;
+					width : 100px; height:100px; background-color:green;
+				}
+			
+			/*position의 default는 static*/
+			</style>
+		</head>
+
+		<body>
+			<div id="box1"> box #1 </div>
+			<div id="box2"> box #2 </div>
+			<div id="box3"> box #3 </div>
+			
+			
+		</body>
+	</html>

@@ -1,0 +1,65 @@
+	<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="UTF-8">
+			<title>navermenu</title>
+			
+			<style type="text/css">
+				ul{
+					display : inline;
+					/*ul을 옆으로 붙게 */
+				}				
+				li{				
+					display : inline-block;
+					/*block을 줘서 width를 주도록 한다.*/
+					width: 30px;
+				}
+				a{					text-decoration : none;
+						font-size : 15pt;
+				}
+				
+				#c{								
+					color : #03CF5D;
+				
+				}
+				
+				#b{				
+					color : grey;
+				}
+			
+			</style>
+		</head>
+	<body>
+	
+		<!-- 메일부터 티비까지 한묶음 사전부터 웹툰까지 한묶음 더보기 
+			링크도 넣어준다. a태그 href에 넣어준다.  -->
+			<nav>
+			<ul class = "menu1 inline">
+				<li><a href="https://mail.naver.com/" id ="c">메일</a></li>
+				<li><a href="https://section.cafe.naver.com/" id ="c">카페</a></li>
+				<li><a href="https://section.blog.naver.com/BlogHome.nhn?directoryNo=0&currentPage=1&groupId=0" id ="c">블로그</a></li>
+				<li><a href="https://kin.naver.com/" id ="c">지식iN</a></li>
+				<li><a href="https://shopping.naver.com/" id ="c">쇼핑</a></li>
+				<li><a href="https://nid.naver.com/nidlogin.login?svctype=1&url=https%3A%2F%2Forder.pay.naver.com%2Fhome" id ="c">Pay</a></li>
+				<li><a href="https://tv.naver.com/" id ="c">TV</a></li>
+			</ul>
+	
+			<ul>
+				<li><a href="" id = "b">사전</a></li>
+				<li><a href="" id = "b">뉴스</a></li>
+				<li><a href="" id = "b">증권</a></li>
+				<li><a href="" id = "b">부동산</a></li>
+				<li><a href="" id = "b">지도</a></li>
+				<li><a href="" id = "b">영화</a></li>
+				<li><a href="" id = "b">뮤직</a></li>
+				<li><a href="" id = "b">책</a></li>
+				<li><a href="" id = "b">웹툰</a></li>
+			</ul>
+			
+			<ul>
+				<li>|더보기 ▼</li>
+			</ul>
+			</nav>
+			
+	</body>
+	</html>

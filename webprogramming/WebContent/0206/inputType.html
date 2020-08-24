@@ -1,0 +1,111 @@
+	
+	<!DOCTYPE html>
+	<html>
+	<head>
+	<meta charset="UTF-8">
+	<title>input Type</title>
+	<style type="text/css">
+	
+	.id{ background-color : yellow;}
+	.id2{ background-color : red;}
+	.id3{ background-color : green;}
+	.id4{ background-color : pink;}
+		
+	.border{ border : 1px solid red}
+	/* 크기, 실선, 색상*/ 
+	
+	.imgBtn{width : 50px; height : 50px;}
+	</style>
+	</head>
+	<body>
+	<!-- type : 속성값
+		 text : 텍스트를 입력할 수 있는 한줄짜리 필드
+		 password : 비밀번호를 입력할수 있는 한줄짜리 필드
+		 *한줄짤리 필드는 구분하기 위해 <br> 을 써준다. 
+		 radio : 라디오 버튼 생성(하나만 선택할 경우 name을 동일하게 설정)
+		 checkbox : 체크박스 생성
+		 file : 파일이름을 입력하는 필드 생성 (선택가능)
+		 reset : 초기화 버튼 (버튼을 누르면 모든 입력필드가 초기화 된다.)
+		 image : 이미지를 전송버튼으로 만든다. (submit 기능과 동일)
+		 submit : 제출 버튼 (서버측으로 데이터를 전송한다.)
+		 hidden : 사용자에게는 보이지 않지만 서버로 전송되는 데이터 
+		 
+		 오늘배운건 회원가입 부분을 개발할때 많이 사용된다.  -->
+	
+<!-- 		<form action ="result.html" method ="get" > -->
+		<form action ="result.html" method ="post" >
+		<!-- 새로운 화면(result.html)로 넘어가서 그 화면을 띄워준다.  파라미터의 값이 같이 넘어가는 것이 get이라고 한다. -->
+		<!-- 라벨 : 클릭하면 해당 칸에 커서가 옮겨진다. // input type : 칸을 만들어준다.  
+		name : id 호출 // class : 칸의 색을 바꿔준다. 
+		size : 상자의 길이를 제한한다.
+		maxlength = "3" : 세글자 이상은 작성할수 없다. -->
+		
+		
+		<!-- password, email, .. : 지정어 
+			".." : 안의 값은 내가 정하는 것 
+			
+			"name =" :인터넷 창에서 띄워준다. 
+			"id =" : 고유한값
+			"class = " : css에서 사용, 중복해서 사용할수 없다.-->
+		
+		
+			<label for="id">아이디 : </label> <input type = "text" name="id" id="id" class ="id"> <br>
+			<label for = "pw">비밀번호 : </label> <input type = "password" name = "pw" id = "pw" size ="10" maxlength = "10" class = "id2"><br>
+			<label for = "pw_re">비밀번호 재확인 : </label><input type = "password" name ="pw_re" id="pw_re" size ="10" maxlength = "10"class = "id3"><br>
+			<label for = "name">이름 : <input type = "text" name="_name" id= "name" class = "id4"><br>
+			
+			<hr>
+			이메일 : <input type ="email" name="email" class = "border"><br>
+			색상 : <input type ="color" name = "color"class = "id2"><br>
+			전화번호 : <input type = "tel" name = "tel" class = "id3"><br>
+			날짜 : <input type = "date" name = "date" class = "id4"><br>
+			url : <input type = "url" name = "url" class = "border"><br>
+			<hr>
+			<!-- 이구간은  많이 쓰이지는 않는다.
+					>> 인터넷 익스플로어에서는 제대로 경고문이 나오지 않아서 특수한 상황이 아닐경우 사용을 하지 않는다. -->
+			
+			<!--  radio는 하나만 선택할수록 한다. 
+			name을 둘다 동일하게 해준다.
+			둘중에 하나만 선택할수 있도록 해준다. -->
+			<input type ="radio" name="gender" value = "male" checked = "checked"> 남자 <br>
+			<input type = "radio" name="gender" value = "female"checked = "checked"> 여자 <br>
+			
+			<hr>
+			
+			<input type = "file" name="file">
+			<hr>
+			
+			<select name = "month" id= "month" class="month">
+			<!-- 월을 선택하는 것 -->
+				<option value = "jan.">1월</option>
+				<option>2월</option>
+				<option selected >3월</option>
+				<!-- selected : 3월을 기본으로 넣어준다.  -->
+				<option>4월</option>
+				<option>5월</option>
+				<option>6월</option>
+				<option>7월</option>
+				<option>8월</option>
+				<option>9월</option>
+				<option>10월</option>
+				<option>11월</option>
+				<option>12월</option>
+				<!--  value 값이 없으면 텍스트 값이 넘어가고 value가 있으면 vla값이 넘어간다. -->
+				<!-- id의 이름에 똑같이 month를 사용하면 안되지는 않는다 위배?? 경고만 뜬다ㅣ class에는 똑같이 month를 사용해도 된다. -->
+			</select>
+		
+			<br>
+				<textarea rows="5" cols="50" name="textBox"></textarea>
+				<!-- row : 줄 // col : 칸 -->	
+				
+				<input type = "hidden" name = "hidden" value="1000">
+			<!-- 브라우저 화면에는 값을 표시하고 싶지 않지만 값을 보내고 싶을때 사용 ,, 여러개 사용가능  -->
+			
+			
+			<br>
+			<input type = "reset" value = "취소">
+			<!-- 칸에 적은 내용이 전부 지워짐  -->
+			<input type = "image" src = "../img/but.jpg" class="imgBtn">
+			<input type ="submit" value ="확인">
+		</form>
+	</body>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	
+	<title>on_event</title>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script>
+	$(function(){
+		/* $("div").click(function(){//클릭했을때만 실행
+			console.log("클릭했습니다.");		
+		});
+		
+		//바인딩 :연결해서 작성해달라는 의미
+		$("div").on("click mouseover dblclick",function(){
+			//여러가지 이벤트를 연결해서 사용할때 on을 사용하지만 별로좋은 방법은아니다 .. 
+			console.log("click했습니다.")
+		});
+		
+		
+		$("button").on({
+			click : function(){
+				alert("click 이벤트 입니다. ");
+				//연결된 함수명을 적어서 호출하기도 한다. 
+			},
+			dblclick : function(){
+				alert("double클릭 이벤트 입니다.");
+			},
+			mouseover : function(){
+				alert("mouseover 입니다. ")
+			}
+		});
+		
+		//같이 사용하는 것보다 기왕이면 따로 쓰는게 낳다. 
+		$("#div").on("click",function(){
+			
+		});
+		$("#div").on("dblclick",function(){
+			
+		}); */
+		
+		//---------------
+		/*
+			.on()
+			- 선택한 요소에 어떤 타입의 이벤트라도 연결가능 
+			- 하나의 이벤트 핸들러에 여러개의 이벤트를 동시에 연결 가능 
+			- 선택한 요소에 여러개의 이벤트 핸들러와 여러개의 이벤트를 연결 가능 
+			
+		*/
+		//-------------
+		
+		//h1태그에 click이벤트 바인딩
+		//해당하는 h1태그만 색상 변경되고 동적으로 생성된 태그는 적용이 안됨 
+		/* $("h1").on("click",function(){
+			$(this).css("background","orange");
+			$("<h1>새로운 제목 태그 입니다. </h1>").insertBefore("h1");
+			//insertBefore : 앞에 삽입, 주황색배경색이 적용되지 않는다. 
+ 			//appendTo : 뒤쪽에 붙여줌 
+		}); */
+		
+		//delegate() : 자기자신으로 포함 새로 생긴 태그에도 효과를 적용시킨다. 
+		//$("부모태그").delegate("선택자","이벤트"함수);
+		/* $("body").delegate("h1","click",function(){
+			$("h1").css("background","green");
+			$("<h1>새로운 제목 태그 입니다. </h1>").insertBefore("h1");
+		}); */
+		
+		
+		
+		/*
+			1) html에 button 생성
+			2) button을 클릭했을 경우 
+				- click이벤트에서 버튼의 컬러를 변경 (background)
+				- 동적으로 button을 하나 더 생성후 click이벤트를 적용
+				- 동적으로 만들어진 버튼은 첫번째 버튼 뒤로 붙임 			
+			3) 동적으로 button을 하나 더 생성 후 click이벤트를 적용
+			4) 동적으로 만들어진 버튼을 클릭했을 경우 모든 버튼의 테두리선을 변경 
+		*/
+	
+		/* $("body").delegate("button","click",function(){
+			$(this).css("background","pink");
+			
+			$("button").after("<button id="newbtn">새로만들어진 버튼 </button>");
+			
+			$("#newbtn")
+		}); */
+			
+		$("body").delegate("button","click",function(){
+		//$("#btn").click(function(){
+			$(this).css("background","cyan");
+			var btn = $("<button/>",{
+				"text" : "동적버튼 생성 ",
+				"click" : function(){
+					$("button").css("border","5px dashed red");
+				}
+			});
+			
+			$(this).after(btn);
+		});
+		
+		
+	});
+	</script>
+</head>
+	<body>
+	<!-- h1태그 작성후 on이벤트 바인딩 -->
+	<h1>h1태그입니다</h1>
+		<div>여기에 이벤트를 주세요</div>
+		<button>버튼을 클릭해주세요</button>
+		<button id="btn">버튼 클릭</button>
+	</body>
+</html>
+
+
+
+

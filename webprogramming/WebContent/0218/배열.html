@@ -1,0 +1,169 @@
+	<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="UTF-8">
+			<title>배열</title>
+			<script type="text/javascript">
+				function myfunc(){
+					
+					var fruits = ["apple","banana","kiwi"]; //배열선언(리터럴로 생성)
+					
+					document.write(fruits[0] +"<br>");
+					document.write(fruits[1] +"<br>");
+					document.write(fruits[2] +"<br>");
+					
+					fruits[3] ="orange";
+					fruits[10] ="grape";
+					fruits[11] =11;
+					//하나의 배열에는 string , int 상관없이 들어간다.
+					document.write(fruits.toString());
+					/*배열명만 사용하는 것과 .tostring()메서드를 사용하는 것은 동일한 출력값을 갖는다. */
+					
+					document.write(fruits.length);
+					
+					document.write("<hr>");
+					
+					var food = new Array();
+					//객체로 배열생성
+					 
+					food[0] = "삼겹살";
+					food[1] = "족발";
+					food[2] = "짜장면";
+					food[3] = "떡볶이";
+					food[4] = "스파게티";
+					
+					//document.write(food)
+					
+					for(var i = 0; i<food.length;i++)
+						{
+							document.write(food[i]+"<br>");
+						}
+					
+					//for-in 문  
+					for(var i in food)
+						{
+							document.write(food[i]+"<br>");						
+						}
+				}
+				//myfunc();
+				
+				
+				/* 
+					prompt로 자신이 가고싶은 휴가지를 입력받고 
+					배열을 선언후 해당 휴가지의 텍스트 입력
+					마지막에 엔터치면 배열울 출력(공백을 입력하면 )
+				*/
+				
+				/*function trip(){
+					
+					var travel = new Array();
+					
+					do{
+						
+						var x = (prompt("관광지를 입력해주세요 "));
+						travel.push(x);
+						
+						if(x == "")
+							{
+								break;
+							}
+						
+					}while(true);
+						
+						document.write(travel);
+						
+						travel.
+					
+				}*/
+				
+				//trip();
+				
+				/*
+					prompt로 숫자를 입력받아서 0이 입력되면 반복문을 종료하고 입력된 짝수번째 의 합과 홀수 번째의 합을 출력하세요 
+					
+					출력형태 ==1,2,3,4,5,6,7,8,9,10
+					짝수의 합 
+					홀수의 합
+				*/
+				
+				/*function hap(){
+					
+					var num = new Array();
+					var evensum = 0;
+					var oddsum = 0;
+					do{
+						var a = (parseInt)(prompt("숫자를 입력해주세요 "));
+						num.push(a);
+						
+						if(a %2==0){
+							evensum += a;
+						}
+						if(a %2!=0){
+							oddsum += a;
+						}
+						
+						
+					}while(a!=0);
+					
+					document.write(num+"<br>");
+					document.write("짝수의 합 : " + evensum);
+					document.write("홀수의 합 : " + oddsum);
+										
+				}*/
+				 //hap();
+				 
+				 //연속된 두 숫자중 하나만 출력
+				 function coding(){
+					 
+					 
+					// var answer=[1,1,3,3,0,1,1];
+					 var answer=[4,4,4,3,3];
+					 var arr = [];
+					 var a = 0;
+					 
+					arr[0] = answer[0];
+					do{
+					 	for(var i= 1; i<=answer.length;i++)
+					 	{					 		
+// 						a++;
+// 						if(answer[i]!=answer[i-1])
+// 							{
+// 								arr[i] = answer[i];
+// 							}
+// 						else{
+// 							answer[i] = arr[a]; 
+// 						}
+
+							if(answer[i]!=answer[i-1])
+								{
+									arr.push(answer[i]);
+								}
+						}		
+							break;
+					 }	while(true);		
+					 
+					 document.write("<br>"+arr);
+					 
+				 }
+				 coding();
+			</script>
+		</head>
+	<body>
+		
+	</body>
+	</html>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

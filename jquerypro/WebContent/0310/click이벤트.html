@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>click이벤트</title>
+		<script src="../js/jquery-3.4.1.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				
+				/*
+				Q1 . h2버튼을 클릭했을 경우 홀수 번째에 있는 h2만 사라지게 하는 로직을 만들어주세요 
+				*/
+			
+				//alert(1);
+				$("h2:odd").click(function(){
+					//alert("h2를 클릭하셨습니다.");
+					$(this).hide(); // display:none; 과 동일 
+					
+				});			
+			});
+			
+			$(function(){
+				//alert(2);
+				
+				var domele = document.getElementsByTagName("h2")[0];
+				domele.style.color ="red";
+				
+				//$(domele).css("color","blue");
+				//앞부분에 반드시 선택자를 기술해준다.
+				
+				/*
+					css()는 jquery메소드 이기 때문에 변수에 바로 사용불가능하다. 
+					domele.css()는 사용불가능
+					dom객체로 jquery 메소드를 사용하기 위해서는 dom객체를 $()로 감싸준다. 
+				*/
+			});
+			
+			$(function(){
+				var pTag = $("h2").get(); //배열형태로 담긴다. 
+				console.log(pTag);
+				//$(pTag[0]).css("color","blue");
+				/* for(var i=0; i<pTag.length; i++){
+					if(i%2==1){	$(pTag[i]).css("color","red"); }
+				} */				
+				//index는 0부터 시작된다. 				
+				$("h2:odd").css("color","red"); //홀수
+				$("h2:even").css("color","green"); //짝수
+				$("h2:first").css("color","orange"); 
+				//$("h2:second").css("color","pink"); //xxx
+				$("h2:last").css("color","silver"); 
+			});
+			
+		</script>
+	</head>
+	<body>
+	
+		<h2>클릭하면 사라집니다. 1</h2>
+		<h2>클릭하면 사라집니다. 2</h2>
+		<h2>클릭하면 사라집니다. 3</h2>
+		<h2>클릭하면 사라집니다. 4</h2>
+		<h2>클릭하면 사라집니다. 5</h2>
+	
+	</body>
+</html>

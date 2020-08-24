@@ -1,0 +1,137 @@
+	<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="UTF-8">
+			<title>form요소</title>
+			<style>
+			#gubox{border:5px dotted gold; width:150px; height:230px; text-align:center;}
+			.btn{color:white;  border-radius: 50%; background-color:blue; width:80px;height:30px;}
+			</style>
+			<script>
+				function btn(){
+					//form요소를 이용해서 텍스트박스안에 내용을 alert로 출력
+					//alert(document.ff.name.value);
+					//alert(document.ff.gender.value);
+					 var ele =document.ff;
+					 for(var i=0; i<ele.hobby.length; i++)
+						 {
+						 	if(ele.hobby[i].checked){
+						 		alert(ele.hobby[i].value);
+						 	}
+						 }
+				}
+				
+				function sub(){
+					
+					var str ="";
+					var a = "";
+					var ele = document.ff;
+					
+					var name = ele.name.value;
+					var gender = ele.gender.value;
+					
+					str += name + " 씨 \n 당신은 " + gender + " 이고,\n 취미가 ";
+									
+					for(var i=0; i<ele.hobby.length; i++){
+						
+						if(ele.hobby[i].checked)
+							{
+								a += ele.hobby[i].value;
+								str += ele.hobby[i].value;
+								if(i==(ele.hobby.length-1)){continue;}
+								else{str += ",";}
+							
+							}
+						}
+						if(a!=""){
+							str += " 이네요!";
+						}				
+					
+						if(a==""){
+							str += " 없네요!"
+						}
+					
+					document.getElementById("result").innerHTML = str;
+				}
+				
+			function gugudan(){
+				var num = "";
+				var res = "";
+				var str = "";
+				
+				var ele = document.ff.dan.value;
+				
+				str +="*** "+ele+" 단 ***\n";
+				
+				for(i=1;i<10;i++)
+					{
+						num = ele*i;
+						str += ele + " * " + i + " = " + num +"\n";
+					}
+				for(j=1;j<10;j++){
+						document.getElementById("result").innerHTML =str +"\n";
+				}
+				
+			}
+			
+			//과제 : select태그를 이용해서 div태그에 구구단 출력 
+			function gugudan2(){
+				var num;
+				num = document.getElementById("num").value;
+				var a ="";
+				for(var i =1; i<10;++i)
+					{
+						a += num + " * " + i + " = " + (num*i) + "<br>";
+					}
+				
+				document.getElementById("gures2").innerHTML= a;
+			}
+			
+			
+			</script>
+		</head>
+	<body>
+	
+		<form name="ff">
+		<hr>
+			<input type = "text" name = "name" id ="name"><br>
+			<input type = "radio" name="gender" value="남자">남<br>
+			<input type = "radio" name="gender" value="여자">여<br>
+			<hr>
+			
+			<input type="checkbox" name="hobby" value ="여행">여행<br>
+			<input type="checkbox" name="hobby" value ="독서">독서<br>
+			<input type="checkbox" name="hobby" value ="영화감상">영화감상<br>
+			<hr>
+			
+			<!--<input type="button" onclick="btn();" value="클릭">  -->
+			
+			<input type="button" onclick="sub();" value="클릭" class="btn">
+			<hr>
+			<input type = "text" name = "dan" id ="dan">단		
+			<input type="button" onclick="gugudan();" value="계산" class="btn"><br>
+			<hr>
+				<textarea rows="5" name="area" id="result"></textarea>
+			<hr>
+			
+			
+		</form>
+		<div>
+		<form>
+			<select id="num">
+				<option value="2">2단</option>
+				<option value="3">3단</option>
+				<option value="4">4단</option>
+				<option value="5">5단</option>
+				<option value="6">6단</option>
+				<option value="7">7단</option>
+				<option value="8">8단</option>
+				<option value="9">9단</option>
+			</select>
+			<input type="button" onclick="gugudan2();" value="선택" class="btn"><br>
+		</form>
+			<br>
+			<div id="gubox"><p id="gures2"></p></div>
+			</div>
+	</body>
+	</html>

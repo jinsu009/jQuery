@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8">
+	<title>Stroage_ex</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="../js/json2.js"></script>
+	<script>
+		/*
+			이름(name), 주소(add), 전화변호(tel) input type="text"로 html에서 생성후 
+			버튼생성해서 클릭하면 
+			localStorage에 3개의 데이터를 key, value로 넣기 
+			
+			문제2. 
+			1)localStorage에 id="자기자신id", pw="1234"로 생성
+			2) 아이디(id), 패스워드(pw) 로그인 버튼을 html에서 생성
+			3) id, pw 기입 후 로그인 버튼을 눌렀을 경우
+			localStorage에 있는 값을 가져와서 id와 pw가 일치하면 body태그 버튼 뒤로 '로그인 되었습니다.',
+			'id, pw가 일치하지 않습니다.' 가 띄워지도록 한다. 
+			
+		*/
+		
+		$(function(){
+			$("button#mem").click(function(){
+				$.ajax({
+					url:"../data/result_chaining.jsp",
+					datatype:"json",
+					type:"post",
+					data:
+						"name="+$("#name").val()
+						+ "&add="+$("#add").val()
+						+ "&tel="+$("#tel").val()
+					
+				})
+				.done(function(data){
+					alert("전송성공");
+					localStorage.setItem("name",$("#name").val());
+					localStorage.setItem("add",$("#add").val());
+					localStorage.setItem("tel",$("#tel").val());
+				})
+				.fail(function(){
+					alert("전송실패");
+				});
+			});
+			
+			
+			localStorage.setItem("id",'abc');
+			localStorage.setItem("pw",'0000');
+			
+			 var id = localStorage.getItem("id");
+			 var pw = localStorage.getItem("pw");
+			
+		
+			
+			$("button#login").click(function(){
+				var logid = $("#loginid").val();
+				var logpw = $("#loginpw").val();
+				//위에는 되는데 밑에는 왜 안될까
+				//var logid = $("#loginid").text();
+				//var logpw = $("#loginpw").text();
+				//alert(logid);
+				if(id==logid){
+					if(pw==logpw){
+						//alert("로그인 성공");
+						$("#submit").after("로그인 성공");
+					}else{
+						//alert("패스워드가 틀렸습니다.");
+						$("#submit").after("패스워드가 틀렸습니다.");
+					}
+				}else if(id!=logid){
+					//alert("아이디가 틀렸습니다.");
+					$("#submit").after("아이디가 틀렸습니다.");
+				}
+				
+			});
+		});
+	</script>
+	</head>
+	<body>
+		이름 : <input type="text" id="name" /><br>
+		주소 : <input type="text" id="add" /><br>
+		번호 : <input type="text" id="tel" /><br>
+		<button id="mem">클릭!</button><br>
+		<hr>
+			ID : <input type="text" id="loginid"/><br>
+			PW : <input type="text" id="loginpw"/><br>
+			<button id="login">로그인</button><br>
+		<p id="submit"></p>
+		<hr>
+	</body>
+</html>

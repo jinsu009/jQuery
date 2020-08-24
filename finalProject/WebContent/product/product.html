@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>product(제품선택)</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script>
+			$(function(){
+				var state ="";
+				$.ajax({
+					url:"jdbc.jsp?flag=1",
+					datatype:"json",
+					success:function(data){
+						data = JSON.parse(data.trim());
+						
+						$.each(data,function(i){
+							console.log(data[i].lprod_gu);
+							$("#lprod").append("<option value='"+data[i].lprod_gu+"'>"+data[i].lprod_nm+"</option>");		
+						});
+							
+					},
+					error:function(xhr){
+						if(xhr.status==404){
+							location.href="error.html";
+						};
+					}
+				});//ajax메인
+				
+					//lprod가 선택됐을 경우 
+					$("#lprod").change(function(){
+						state = $(this).val();
+						$.ajax({
+							url:"jdbc.jsp?flag=2",
+							datatype:"json",
+							type:"get",
+							data: "lprod_gu=" + state,
+							success:function(data){
+								console.log(data)
+								data = JSON.parse(data.trim());
+								
+								$("#prod").empty(); // 이거 적으니까 안되던게 됨 
+								$.each(data,function(i){
+									if(state == data[i].prod_lgu){
+										console.log(data[i].prod_name);
+										$("#prod").append("<option value='"+data[i].prod_id+"'>"+data[i].prod_name+"</option>");
+									}
+								});
+							}
+						});
+						
+					});//lprod
+					
+					$("#prod").change(function(){
+						state = $("#prod").val();
+						$.ajax({
+							url:"jdbc.jsp?flag=3",
+							datatype:"json",
+							type:"get",
+							data: "prod_id=" + state,
+							success:function(data){
+								console.log(data)
+								data = JSON.parse(data.trim());
+								var str = "";
+								str += "<tr>";
+									str += "<th> prod_id </th>";
+									str += "<th> prod_name </th>";
+									str += "<th> prod_lgu</th>";
+									str += "<th> prod_buyer</th>";
+									str += "<th> prod_cost</th>";
+								str += "</tr>";
+								$("#restable").empty(); 
+								$.each(data,function(i){
+									str += "<tr>";
+										str += "<td>";
+										str += data[i].prod_id +"<br>";
+// 										str += data[0].prod_id +"<br>";
+										str += "</td>";
+										str += "<td>";
+										str += data[i].prod_name +"<br>";
+// 										str += data[0].prod_name +"<br>";
+										str += "</td>";
+										str += "<td>";
+										str += data[i].prod_lgu +"<br>";
+// 										str += data[0].prod_lgu +"<br>";
+										str += "</td>";
+										str += "<td>";
+										str += data[i].prod_buyer +"<br>";
+// 										str += data[0].prod_buyer +"<br>";
+										str += "</td>";
+										str += "<td>";
+										str += data[i].prod_cost +"<br>";
+// 										str += data[0].prod_cost +"<br>";
+										str += "</td>";
+									str += "</tr>";
+
+								});
+									$("#restable").append(str);
+						},
+						error : function(){
+							console.log("오류야");
+						}
+					});
+			});//prod
+		});
+		</script>
+		<style>
+			body{ text-align:center; }
+			div{border:1px solid black; margin: 0 auto; }
+			#big-box{ width:1000px; height:700px}
+ 			#mid-box{ width:800px; height:300px} 
+ 			#lprod{width:350px; height:50px} 
+			#prod{width:450px; height:50px} 
+			#result{width:1000px; height:300px;}
+		</style>
+	</head>
+	<body>
+	<div id="big-box">
+	
+		<h2>제품 리스트</h2>
+			<div id="mid-box">
+				<h3>제품분류리스트</h3>
+					<select id="lprod">
+					<!-- 
+						jdbc.jsp페이지 호출시 json타입으로 텍스트 가져오기 
+						product.html에서 ajax호출로 데이터 (json)가져오기 
+						json형태로 만든 텍스트를 json객체로 변경
+						option에 넣어주기 
+						** web-inf\lib폴더에 ojdbc6.jar파일 import
+					-->
+						
+					</select>
+				<h3>상품리스트</h3>
+					<select id="prod">
+						<option></option>
+					</select>
+			</div>
+			<br>
+			<div id="reuslt">
+				<table id="restable" border="1" style="width:1000px; height:300px; border:1px solid red;">
+				</table>
+			</div>
+	</div>
+	</body>
+</html>
